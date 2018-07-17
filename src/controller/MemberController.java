@@ -15,30 +15,11 @@ public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		String page = request.getParameter("page");
-		//request.getServletPath()
-		switch(action) {
+	
+		switch(request.getParameter("action")) {
 		case "move" :
-			switch(page) {
-			case "joinForm" :request.getRequestDispatcher("/WEB-INF/view/member/joinForm.jsp").forward(request, response);break;
-			case "joinResult" :request.getRequestDispatcher("/WEB-INF/view/member/joinResult.jsp").forward(request, response);break;
-			case "userLoginForm" :request.getRequestDispatcher("/WEB-INF/view/member/userLoginForm.jsp").forward(request, response);break;
-			case "userLoginResult" :request.getRequestDispatcher("/WEB-INF/view/member/userLoginResult.jsp").forward(request, response);break;
-			case "listForm" :request.getRequestDispatcher("/WEB-INF/view/member/listForm.jsp").forward(request, response);break;
-			case "findByIdForm" :request.getRequestDispatcher("/WEB-INF/view/member/findByIdForm.jsp").forward(request, response);break;
-			case "findByIdResult" :request.getRequestDispatcher("/WEB-INF/view/member/findByIdResult.jsp").forward(request, response);break;
-			case "findByTeamIdForm" :request.getRequestDispatcher("/WEB-INF/view/member/findByTeamIdForm.jsp").forward(request, response);break;
-			case "findByTeamIdResult" :request.getRequestDispatcher("/WEB-INF/view/member/findByTeamIdResult.jsp").forward(request, response);break;
-			case "updateForm" :request.getRequestDispatcher("/WEB-INF/view/member/updateForm.jsp").forward(request, response);break;
-			case "updateResult" :request.getRequestDispatcher("/WEB-INF/view/member/updateResult.jsp").forward(request, response);break;
-			case "deleteForm" :request.getRequestDispatcher("/WEB-INF/view/member/deleteForm.jsp").forward(request, response);break;
-			case "deleteResult" :request.getRequestDispatcher("/WEB-INF/view/member/deleteResult.jsp").forward(request, response);break;
-			
-			}
-		
+	request.getRequestDispatcher(String.format("/WEB-INF/view/member/%s.jsp",request.getParameter("page"))).forward(request, response);
 		break;
-		
 		
 		}
 		
