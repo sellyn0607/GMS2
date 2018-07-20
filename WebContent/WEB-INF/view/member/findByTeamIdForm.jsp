@@ -10,8 +10,8 @@
 
 <form action="<%=ctx%>/member.do">
 팀ID <input type="text" name="team_id"/><br />
-<input type="hidden" name="action" value="move"/>
-<input type="hidden" name="page" value="findByTeamIdResult"/>
+<input type="hidden" name="action" value="findteamid"/>
+<input type="hidden" name="page" value="findByTeamId"/>
 <input type="submit" value="확인"/>
 </form>
 </body>

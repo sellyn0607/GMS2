@@ -12,6 +12,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void createMember(MemberBean member) {
+		System.out.println(member);
 		MemberDAOImpl.getInstance().insertMember(member);
 	}
 
@@ -50,8 +51,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public List<MemberBean> selectAllMember() {
-		
-		
 		return MemberDAOImpl.getInstance().selectAllMember();
 	}
 	@Override

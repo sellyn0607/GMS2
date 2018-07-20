@@ -10,8 +10,8 @@
 <h3>아이디찾기</h3>
 <form action="<%=ctx%>/member.do">
 아이디 : <input type="text" name="userid"/><br />
-<input type="hidden" name="action" value="move"/>
-<input type="hidden" name="page" value="findByIdResult"/>
+<input type="hidden" name="action" value="findid"/>
+<input type="hidden" name="page" value="findById"/>
 <input type="submit" value="확인"/>
 </form>
 </body>

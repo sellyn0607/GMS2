@@ -1,0 +1,6 @@
+package enums;
+
+public enum Action {
+	
+	JOIN,MOVE,UPDATE,DELETE,FINDID,FINDTEAMID,COUNT,LIST,LOGIN
+}

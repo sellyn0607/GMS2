@@ -17,8 +17,8 @@
 	 <input type="text" name="userid" ><br><Br>
 	 비밀번호<br>
 	 <input type="password" name="pw" ><br><br>
-	 <input type="hidden" name="action" value="move" />
-	 <input type="hidden" name="page" value="userLoginResult"/>
+	 <input type="hidden" name="action" value="login" />
+	 <input type="hidden" name="page" value="mypage"/>
 	<input type="submit" value="로그인"><br>
 	</form></div>
 </body>

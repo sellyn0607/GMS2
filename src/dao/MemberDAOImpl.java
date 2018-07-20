@@ -21,6 +21,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberBean member) {
 		try {
+			System.out.println(member);
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeUpdate(String.format(MemberQuery.INSERT_MEMBAER.toString(),member.getUserid(),
 					member.getPassword(),member.getName(),member.getSsn(),119-Integer.parseInt(member.getSsn().substring(0,2)),
@@ -53,7 +54,7 @@ public class MemberDAOImpl implements MemberDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	
 		return bean;
 	}
 	@Override
@@ -97,7 +98,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public List<MemberBean>  selectAllMember() {
 		List<MemberBean> lst=new ArrayList<>();
-		
+
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeQuery(MemberQuery.SELECT_ALLMEMBER.toString());

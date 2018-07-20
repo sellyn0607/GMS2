@@ -12,7 +12,7 @@
 아이디 : <input type="text" name="userid"/><br />
 비밀번호 : <input type="password" name ="pw" /><br />
 새 비밀번호 입력 : <input type="password" name ="npw" />
-<input type="hidden" name="action" value="move"/>
+<input type="hidden" name="action" value="update"/>
 <input type="hidden" name="page" value="updateResult"/>
 <input type="submit" value="확인"/>
 

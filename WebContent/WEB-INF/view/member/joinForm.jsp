@@ -19,8 +19,8 @@
 	팀ID : <select name="team_id"><option value="ATEAM">ATEAM</option><option value="CTEAM">CTEAM</option><option value="HTEAM">HTEAM</option>
 			<option value="STEAM">STEAM</option></select><br> 
 	생년 월일 : <input type="text" name="ssn1" maxlength= "6" size="7"> - <input type="text" name="ssn2" maxlength="1" size="1"><br>
-	<input type="hidden" name="action" value="move"/>
-	<input type="hidden" name="page" value="joinResult"/>
+	<input type="hidden" name="action" value="join"/>
+	<input type="hidden" name="page" value="userLoginForm"/>
 	<input type="submit" value="회원가입" >
 	
 	</form></div>

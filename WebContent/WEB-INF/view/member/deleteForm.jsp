@@ -11,8 +11,8 @@
 <form action="<%=ctx %>/member.do">
 아이디 : <input type="text" name="userid"/><br />
 비밀번호 : <input type="password" name ="pw" /><br />
-<input type="hidden" name="action" value="move"/>
-<input type="hidden" name="page" value="deleteResult"/>
+<input type="hidden" name="action" value="delete"/>
+<input type="hidden" name="page" value="memberDelete"/>
 <input type="submit" value="확인"/>
 
 </form>
