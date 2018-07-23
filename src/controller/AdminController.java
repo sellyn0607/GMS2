@@ -18,10 +18,10 @@ import command.Sentry;
 import command.UpdateCommand;
 import domain.MemberBean;
 import service.MemberServiceImpl;
-@WebServlet("/member.do")
+@WebServlet("/admin.do")
 /*@WebServlet({"/member/joinFrom.do","/member/joinResult.do","/member/userLoginFrom.do","/member/listFrom.do",
 	"/member/findByIdFrom.do","/member/findByTeamIdFrom.do","/member/updateFrom.do","/member/deleteFrom.do"})*/
-public class MemberController extends HttpServlet {
+public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,10 +29,6 @@ public class MemberController extends HttpServlet {
 		System.out.println("컨트롤 : "+ request.getParameter("userid"));
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
-			if(Sentry.cmd.getPage().equals("index")) {
-				Carrier.redirect(request, response,"");
-				
-			}
 				Carrier.forword(request, response);//캐리어로 보냄 ?
 			//request.getRequestDispatcher(String.format("/WEB-INF/view/member/%s.jsp",request.getParameter("page"))).forward(request, response);
 		break;
@@ -61,7 +57,7 @@ public class MemberController extends HttpServlet {
 			//System.err.println(request.getAttribute("count"));
 			break;
 		case LIST:
-			Carrier.forword(request, response);
+			request.getAttribute("list");
 			break;
 		case LOGIN:
 			if(request.getAttribute("match").equals("TRUE")){

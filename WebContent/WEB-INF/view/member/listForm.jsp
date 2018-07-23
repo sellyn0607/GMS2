@@ -6,7 +6,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<% List<MemberBean> lst = MemberServiceImpl.getInstance().selectAllMember();%>
+<% List<MemberBean> lst = (List)request.getAttribute("list");%>
 
 	<meta charset="UTF-8" />
 	<title>리스트</title>

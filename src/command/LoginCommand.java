@@ -24,14 +24,12 @@ public class LoginCommand extends Command{
 			m.setUserid(request.getParameter("userid"));
 			m.setPassword(request.getParameter("pw"));
 		  	m=MemberServiceImpl.getInstance().login(m);
-		  	System.out.println("LC : "+m);
 		  	if(MemberServiceImpl.getInstance().login(m).getSsn().equals("999")) {
 		  		request.setAttribute("match","FALSE");
 		  		
 		  	}else {
 		  		request.setAttribute("match","TRUE");
 		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m).getUserid());
-		  		System.out.println("LC 2 : "+request.getAttribute("user"));
 		  	}
 		  	
 		 

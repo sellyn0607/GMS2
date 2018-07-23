@@ -9,11 +9,8 @@
 	<title>아이디 찾기</title>
 </head>
 <body>
-<% MemberBean m = new MemberBean();
-	m.setUserid(request.getParameter("userid"));
-	m=MemberServiceImpl.getInstance().findById(m);
-  	%>
-  	<h3><%=m %></h3>
+
+  	<h3></h3>
   	<h2><a href="../login/mypage.jsp">메인화면으로</a></h2>
 </body>
 </html>
