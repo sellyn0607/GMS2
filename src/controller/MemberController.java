@@ -26,7 +26,6 @@ public class MemberController extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Sentry.init(request,response);
-		System.out.println("컨트롤 : "+ request.getParameter("userid"));
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
 			if(Sentry.cmd.getPage().equals("index")) {

@@ -12,14 +12,22 @@
 <body>
 	<div id="user">
 	<h1>로그인</h1>
-	<form action="<%=ctx %>/member.do" style="border:1px solid black;">
+	<form action="mo" style="border:1px solid black;">
 	 아이디 <br />
 	 <input type="text" name="userid" ><br><Br>
 	 비밀번호<br>
 	 <input type="password" name="pw" ><br><br>
-	 <input type="hidden" name="action" value="login" />
-	 <input type="hidden" name="page" value="mypage"/>
+	 <!-- <input type="hidden" name="action" value="login" />
+	 <input type="hidden" name="page" value="mypage"/> -->
 	<input type="submit" value="로그인"><br>
 	</form></div>
+	<script>
+
+function move(domain,action,page){
+	location.href = "${CONTEXT}/"+domain+".do?action="+action+"&page="+page;
+}
+
+	
+</script>
 </body>
 </html>

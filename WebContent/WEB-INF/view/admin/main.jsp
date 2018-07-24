@@ -1,7 +1,5 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="<%=application.getContextPath() %>" />
 
 
 <!doctype html>
@@ -14,7 +12,6 @@
 		<div id="Login-box">
 			&nbsp;&nbsp;
 		</div>
-		
 		<jsp:include page="menuBox.jsp" />
 	</div> <!-- header end -->
 	<jsp:include page="contentBox.jsp" />

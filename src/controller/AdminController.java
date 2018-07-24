@@ -24,12 +24,12 @@ import service.MemberServiceImpl;
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Sentry.init(request,response);
-		System.out.println("컨트롤 : "+ request.getParameter("userid"));
+		System.out.println("어드민 컨트롤러");
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
-				Carrier.forword(request, response);//캐리어로 보냄 ?
+				Carrier.forword(request, response);
 			//request.getRequestDispatcher(String.format("/WEB-INF/view/member/%s.jsp",request.getParameter("page"))).forward(request, response);
 		break;
 		

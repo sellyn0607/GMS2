@@ -39,10 +39,10 @@ div#Login-box{
 	margin: 10px;
 	font-size: 1.1em;
 	display: block;
-	color : #fff;
+	color : #000000;
 }
 div#Login-box a:hover{
-	colo: #fff;
+	colo: #400040;
 	text-decoration: none;
 }
 div#Login-box a:active{
@@ -64,7 +64,7 @@ div#header h1{
 	font-size: 32px;
 }
 div#content{
-	padding: 15px 30px;
+	padding: 0px 30px;
 	background-color: #c0c0c0;
 	margin-bottom: 30px;
 	min-height: 400px;
@@ -73,8 +73,11 @@ div#content{
 }
 div#content-box{
 	clear:both;
-	margin-top: 40px;
+	text-align : center;
 	color: black;
+	
+}
+div#content-img{
 	
 }
 
@@ -116,43 +119,9 @@ div#footer{
 	line-height: nomal;
 	font-size: 1.5em;
 }
-div#menu-box2{
-	clear:both;
-	margin-top: :40px;
-	
-}
-ul#menu2{
-	text-align: left;
-	margin: 0;
-	border-bottom: 1px #0080ff;
-	position: relative;
-}
-ul#menu2 li{
-	display: inline;
-	list-style: none;
-	background-color: #00ff00;	
-}
-ul#menu2 li a{
-	padding: 10px 20px;
-	background-color: #0080ff;
-	font-weight: bold;
-	text-decoration: none;
-	line-height: 2.8em;
-	color : black;
-		
-}
-ul#menu2 li a:hover{
-	background-color: #8000ff;
-	text-decoration: none;
-		
-}
-ul#menu2 li a:active{
-	background-color: #ff8040;
-	text-decoration: none;
-		
-}
 
-/* 	/* home */
+
+
 	table,th,td{border: 1px solid black;border-collapse: collapse;text-align:center;background: #cce6ff }
 	#wt{width:20%}
 	#tb{width:70%; margin: 0 auto }
@@ -160,4 +129,4 @@ ul#menu2 li a:active{
 	
 	
 	.he-50{height:50px}
-	.height-500px{height:500px} */
+	.height-500px{height:500px} 

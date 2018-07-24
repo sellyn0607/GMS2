@@ -11,7 +11,7 @@
 <body>
 <div id="user">
 	<h2> 회원 가입 </h2>
-	<form action="<%=ctx %>/member.do" style="border:1px solid black">
+	<form action="<%=ctx %>/member.do" onsubmit="return sendForm()" style="border:1px solid black">
 	아이디 : <input type="text" name="userid" maxlength= "10"size="9">  <br>
 	비밀번호 : <input type="password" name="pw" maxlength= "20" size="12"> <br>
 	이름 : <input type="text" name="name" maxlength="5" size="8"><br>
@@ -22,8 +22,6 @@
 	<input type="hidden" name="action" value="join"/>
 	<input type="hidden" name="page" value="userLoginForm"/>
 	<input type="submit" value="회원가입" >
-	
 	</form></div>
-	
 </body>
 </html>

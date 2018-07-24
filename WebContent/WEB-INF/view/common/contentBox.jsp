@@ -2,4 +2,7 @@
 <div id="content">
 <div id="content-box">
 		<h1>WELCOM MY HOMEPAGE</h1>
-		</div></div>
+		</div>
+		<div id="content-img">
+		<img src="${context}/resources/img/home/test.jpg" alt=""  /></div>
+		</div>
