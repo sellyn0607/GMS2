@@ -1,10 +1,28 @@
-function Common() {
-		this.move = function(t,domain,action,page) {
-			location.href = t+"/"+domain+".do?action="+action+"&page="+page;		
-	}
-};
+var router= (()=> {
+	return {move :x=> {
+			location.href = x[0]+"/"+x[1]+".do?action="+x[2]+"&page="+x[3]		
+	}};
+})();
+var service =(()=>{
+	return {
+		loginValiation : x=>{
+			if(x.userid===""){
+				alert(x);
+				alert("ID 를 입력해주세요 ");	
+				return false;
+			}
+			else if (x.password===""){
+				alert("비밀번호를 입력해주세요");
+				return false;
+			}else{
+				return true;
+			}
+		}
+	};
+})();
+
 	// anoymous functions
-	function member() {
+	function Member() {
 		var userid,password,ssn;
 		
 		this.setUserid = function(x){
@@ -39,5 +57,11 @@ function Common() {
 				return true;
 			}
 		}
+
+
+		//function(){}();
+		//(function(){})(); // Goofy
+		(function(){}()); // Groovy
+		
 	};
 	

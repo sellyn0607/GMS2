@@ -2,25 +2,16 @@
 <%@page import="domain.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% String ctx = application.getContextPath(); %>
+ <% List<MemberBean> lst = (List)request.getAttribute("list");%>
 <!doctype html>
 <html lang="en">
-<head>
-<% List<MemberBean> lst = (List)request.getAttribute("list");%>
-
-	<meta charset="UTF-8" />
-	<title>리스트</title>
-	<style>
-	.table,tr,td,th{
-		border: 1px solid black;	border-collapse: collapse;	text-align:center; 	margin: 0 auto 
-
-	}
-	</style>
-</head>
+<jsp:include page="../common/head.jsp" />
 <body>
+<h3>리스트</h3>
 
-<table class="table">
- 	<tr >
+
+ <table style="margin: 0;">
+ 	<tr>
  		<th>ID</th>
  		<th>이름</th>
  		<th>비밀번호</th>
@@ -34,9 +25,7 @@
  		<td><%= m.getPassword() %></td>
  		<td><%= m.getAge() %></td>
  	</tr><%} %>
- 	
- </table>
- 
+ </table>  
  
  </body>
 </html>

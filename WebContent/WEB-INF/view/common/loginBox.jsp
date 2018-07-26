@@ -5,11 +5,9 @@
 		</div>
 <script>
 document.getElementById('moveLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	alert("로그인");
-	new Common().move('${context}','member','move','userLoginForm');
+	router.move(['${context}','member','move','userLoginForm']);
 });
 document.getElementById('joinLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	alert("조인");
-	new Common().move('${context}','member','move','joinForm');
+	router.move(['${context}','member','move','joinForm']);
 });
 </script>

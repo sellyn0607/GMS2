@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<% String ctx = application.getContextPath(); %>
 <html lang="en">
 <jsp:include page="../common/head.jsp" />
 <body>
@@ -23,7 +22,8 @@
 		form.method="post";
 		member.setUserid(form.userid.value);
 		member.setPassword(form.pw.value);
-		if(member.loginValiation()){
+		
+		if(service.loginValiation(member)){
 			form.submit();
 		}
 		

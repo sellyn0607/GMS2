@@ -3,9 +3,20 @@
 			<ul id="menu">
 				<li><a href="">HOME</a></li>
 				<li><a href="">ABOUT</a></li>
-				<li><a onclick="common.move('admin','move','main')">ADMIN</a></li>
-				<li><a onclick="common.move('member','move','findByIdForm')">회원ID검색</a></li>
+				<li><a id="adminButt">ADMIN</a></li>
+				<li><a id="findIdButt">회원ID검색</a></li>
 				
 				
 			</ul>
+			<script>
+			document.getElementById('adminButt').addEventListener('click',function(){ // 콜백함수 .....
+				
+				new Common().move('${context}','admin','move','main');
+			});
+			document.getElementById('findIdButt').addEventListener('click',function(){ // 콜백함수 .....
+				
+				new Common().move('${context}','member','move','findByIdForm');
+			});
+			
+			</script>
 		</div>
