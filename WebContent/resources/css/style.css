@@ -28,9 +28,9 @@ div#header{
 	padding:0;
 	color:#000;
 }
-div#title{
+div#title-box{
 	float : left;
-	text-align: left;
+	text-align: center;
 	display: block; /* 줄바꿈 */
 	
 }
@@ -119,7 +119,8 @@ div#footer{
 	line-height: nomal;
 	font-size: 1.5em;
 }
-
+#user
+{margin: 150px auto;width:250px;}
 
 
 	table,th,td{border: 1px solid black;border-collapse: collapse;text-align:center;background: #cce6ff }

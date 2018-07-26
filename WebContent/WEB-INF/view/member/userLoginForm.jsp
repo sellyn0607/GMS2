@@ -2,32 +2,35 @@
 <!doctype html>
 <% String ctx = application.getContextPath(); %>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-	<style>
-	#user{margin: 150px auto;width:250px;}
-	</style>
-</head>
+<jsp:include page="../common/head.jsp" />
 <body>
 	<div id="user">
 	<h1>로그인</h1>
-	<form action="mo" style="border:1px solid black;">
-	 아이디 <br />
-	 <input type="text" name="userid" ><br><Br>
-	 비밀번호<br>
-	 <input type="password" name="pw" ><br><br>
-	 <!-- <input type="hidden" name="action" value="login" />
-	 <input type="hidden" name="page" value="mypage"/> -->
-	<input type="submit" value="로그인"><br>
+	<form id="loginForm"  style="border:1px solid black;">
+	&nbsp; 아이디 <br />
+	 &nbsp;<input type="text" name="userid" ><br><Br>
+	&nbsp; 비밀번호<br />
+	&nbsp; <input type="password" name="pw" ><br><br>
+	 <input type="hidden" name="action" value="login" />
+	 <input type="hidden" name="page" value="mypage"/>
+	<input id="loginFormBtn" type="button" value="로그인"><br>
 	</form></div>
 	<script>
-
-function move(domain,action,page){
-	location.href = "${CONTEXT}/"+domain+".do?action="+action+"&page="+page;
-}
-
+	document.getElementById('loginFormBtn').addEventListener('click',function(){
+		var member = new Member();
+		var form = document.getElementById('loginForm');
+		form.action="${context}/member.do";
+		form.method="post";
+		member.setUserid(form.userid.value);
+		member.setPassword(form.pw.value);
+		if(member.loginValiation()){
+			form.submit();
+		}
+		
+		
 	
+		
+	});
 </script>
 </body>
 </html>

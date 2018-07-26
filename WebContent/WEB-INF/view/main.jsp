@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
-<jsp:include page="common/head.jsp"></jsp:include>
+<jsp:include page="common/head.jsp" />
 <body>
 <div id="wrapper">
 	<div id="header">
@@ -15,9 +15,7 @@
 
 <script>
 
-function move(domain,action,page){
-	location.href = "${context}/"+domain+".do?action="+action+"&page="+page;
-}
+
 function sendForm() {
  	 alert("하이");
        return true;

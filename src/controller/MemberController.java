@@ -63,6 +63,7 @@ public class MemberController extends HttpServlet {
 			Carrier.forword(request, response);
 			break;
 		case LOGIN:
+			
 			if(request.getAttribute("match").equals("TRUE")){
 				Carrier.forword(request, response);
 			}else {
