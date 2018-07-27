@@ -28,6 +28,7 @@ public class MemberController extends HttpServlet {
 		Sentry.init(request,response);
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
+			System.out.println("무브 컨트롤러");
 			if(Sentry.cmd.getPage().equals("index")) {
 				Carrier.redirect(request, response,"");
 				
@@ -37,7 +38,7 @@ public class MemberController extends HttpServlet {
 		break;
 		
 		case JOIN:
-			
+			System.out.println("멤버 컨트롤러 ");
 			Carrier.forword(request, response);
 			break;
 		

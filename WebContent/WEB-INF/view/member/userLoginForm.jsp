@@ -16,19 +16,18 @@
 	</form></div>
 	<script>
 	document.getElementById('loginFormBtn').addEventListener('click',function(){
-		var member = new Member();
+		/* var member = new Member(); */
 		var form = document.getElementById('loginForm');
-		form.action="${context}/member.do";
-		form.method="post";
-		member.setUserid(form.userid.value);
-		member.setPassword(form.pw.value);
-		
-		if(service.loginValiation(member)){
+	/* 	member.setUserid(form.userid.value);
+		member.setPassword(form.pw.value); */
+		var x = service.nullChecker([form.userid.value,form.pw.value]);
+		if(x.checker){
+			form.action="${context}/member.do";
+			form.method="post";
 			form.submit();
-		}
+		}else
+			alert(x.text);
 		
-		
-	
 		
 	});
 </script>

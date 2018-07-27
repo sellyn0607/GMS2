@@ -22,10 +22,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public void insertMember(MemberBean member) {
 		try {
 			System.out.println(member);
+			//(mem_id,password,name,ssn,age,roll,team_id,gender,subject)
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeUpdate(String.format(MemberQuery.INSERT_MEMBAER.toString(),member.getUserid(),
-					member.getPassword(),member.getName(),member.getSsn(),119-Integer.parseInt(member.getSsn().substring(0,2)),
-					member.getRoll(),member.getTeamId()));
+					member.getPassword(),member.getName(),member.getSsn(),member.getAge(),
+					member.getRoll(),member.getTeamId(),member.getGender()));
 		
 		} catch (Exception e) {
 			e.printStackTrace();

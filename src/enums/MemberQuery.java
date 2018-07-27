@@ -12,7 +12,7 @@ public enum MemberQuery {
 					"  , PASSWORD FROM MEMBER WHERE MEM_ID LIKE '%s' and PASSWORD LIKE '%s'";
 			break;
 		case INSERT_MEMBAER:
-			query="insert into member(mem_id,password,name,ssn,age,roll,team_id) values('%s','%s','%s','%s','%s','%s','%s') ";
+			query="insert into member(mem_id,password,name,ssn,age,roll,team_id,gender) values('%s','%s','%s','%s','%s','%s','%s','%s') ";
 			break;
 		case SSN_LIST:
 			query="select mem_age from teamw "; break;

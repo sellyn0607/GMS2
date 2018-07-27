@@ -1,27 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<% String ctx = application.getContextPath(); %>
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>회원가입</title>
-	<style>#user{margin: 150px auto;width:250px;}</style>
-</head>
+<jsp:include page="../common/head.jsp" />
+<style>#user{margin: 150px auto;width:250px;}</style>
+
 <body>
 <div id="user">
 	<h2> 회원 가입 </h2>
-	<form action="<%=ctx %>/member.do" onsubmit="return sendForm()" style="border:1px solid black">
+	<form id="joinForm"  style="border:1px solid black">
 	아이디 : <input type="text" name="userid" maxlength= "10"size="9">  <br>
 	비밀번호 : <input type="password" name="pw" maxlength= "20" size="12"> <br>
 	이름 : <input type="text" name="name" maxlength="5" size="8"><br>
 	명단 : <input type="radio" name="roll" value="팀장"/>팀장 <input type="radio" name="roll" value="팀원"/>팀원<br>
 	팀ID : <select name="team_id"><option value="ATEAM">ATEAM</option><option value="CTEAM">CTEAM</option><option value="HTEAM">HTEAM</option>
-			<option value="STEAM">STEAM</option></select><br> 
-	생년 월일 : <input type="text" name="ssn1" maxlength= "6" size="7"> - <input type="text" name="ssn2" maxlength="1" size="1"><br>
+			<option value="STEAM">STEAM</option></select><br>
+			 
+	수강 목록  : <input type="checkbox" name="subject" value="java" checked="checked"/> Java
+	<input type="checkbox" name="subject" value="JSP" /> JSP <br />
+	<input type="checkbox" name="subject" value="PHP" > PHP
+	<input type="checkbox" name="subject" value=NodeJS /> NodeJS
+	<input type="checkbox" name="subject" value="Linux" /> Linux <br />
+	<input type="checkbox" name="subject" value="HTML" /> HTML
+ 	<input type="checkbox" name="subject" value="Spring" /> Spring <br />	
+	 
+	생년 월일 : <input type="text" name="ssn1" maxlength= "6" size="7"> - <input type="text" name="ssn2" maxlength="1" size="1"> <br> 	
 	<input type="hidden" name="action" value="join"/>
 	<input type="hidden" name="page" value="userLoginForm"/>
-	<input type="submit" value="회원가입" >
+	<input type="hidden" name="gender" />
+	<input type="hidden" name="age" />
+	<input id="joinButt" type="button" value="회원가입" >
 	</form></div>
+	<script>
+	document.getElementById('joinButt').addEventListener('click',function(){
+		
+		var form = document.getElementById('joinForm');
+		var x = service.nullChecker(
+				[form.userid.value,
+					form.pw.value,
+					form.name.value,
+					form.roll.value,
+					form.team_id.value,
+					form.ssn1.value,
+					form.ssn2.value]);
+		if(x.checker){
+			form.action="${context}/member.do";
+			form.method="post";
+		
+			// [form.ssn2.value,form.ssn1.value]
+			member.join([form.ssn2.value,form.ssn1.value]);
+			form.gender.value = member.getGender();
+			form.age.value = member.getAge();
+			alert(member.getAge());
+			form.submit();
+			
+		}else
+			alert(x.text);
+		
+		
+	});
+	</script>
 </body>
 </html>

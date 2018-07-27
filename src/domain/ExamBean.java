@@ -3,7 +3,7 @@ package domain;
 import lombok.Data;
 
 @Data
-public class ExamBean extends ProjectBean{
+public class ExamBean {
 	
 	String examSeq,memId,score,month,subSeq,recoreSeq,
 	scJava,scHtml,scR,scPhy,scSql;

@@ -5,63 +5,80 @@ var router= (()=> {
 })();
 var service =(()=>{
 	return {
-		loginValiation : x=>{
-			if(x.userid===""){
-				alert(x);
-				alert("ID 를 입력해주세요 ");	
-				return false;
+		nullChecker : x=>{
+			var i= 0 ; 
+			var j = { checker : true, text : '필수입력값이 없습니다.'};
+			for(i in x){
+				if(x[i]===''){
+					j.checker = false 
+				}
 			}
-			else if (x.password===""){
-				alert("비밀번호를 입력해주세요");
-				return false;
-			}else{
-				return true;
+			return j;
+			/*var ok = true ;
+			for(var y in x){
+				if(x[y]===""){
+					alert("필수 입력칸이 비어있습니다");
+					return ok;
+				}
 			}
+			
+			return ok;*/
 		}
+		
 	};
 })();
 
-	// anoymous functions
-	function Member() {
-		var userid,password,ssn;
+	var member=(()=> {
+		var _userid,_password,_ssn,_age,_gender;
 		
-		this.setUserid = function(x){
-			this.userid = x;
-		}
-		this.setPassword = function(y){
-			this.password = y;
-		}
-		this.setSsn = function(z){
-			this.ssn = z;
-		}
-	
-		this.getUserid = function(){
-			return this.userid;
-		}
-		this.getPassword = function(){
-			return this.password;
-		}
-		this.getSsn = function(){
-			return this.ssn;
-		}
-		this.loginValiation= function() {
+		var setUserid = (userid)=>{this._userid = userid;}
+		var setPassword = (password)=>{this._password = password;}
+		var setSsn = (ssn)=>{this._ssn = ssn;}
+		var setAge = (age)=>{
+			var d = new Date();
+			d=(d.getFullYear()-age.substring(0,2))+1;
 			
-			if(this.userid===""){
-				alert("id비어있음");	
-				return false;
-			}
-			else if (this.password===""){
-				alert("pw비어있음");
-				return false;
-			}else{
-				return true;
-			}
-		}
-
-
-		//function(){}();
-		//(function(){})(); // Goofy
-		(function(){}()); // Groovy
+			this._age = (String(d)).substring(2,4);
 		
-	};
+		//119-Integer.parseInt(member.getSsn().substring(0,2)
+		 
+		}
+		var setGender = (gender)=>{
+			var s;
+		switch(gender){
+		case '1' : s="남자"; break;
+		case '2' : s="여자"; break;
+		
+		}
+		this._gender=s;
+		}
+		
+		var getUserid = ()=>{return this._userid;}
+		var getPassword = ()=>{return this._password;}
+		var getSsn = ()=>{return this._ssn;}
+		var getAge = ()=>{return this._age;}
+		var getGender = ()=>{return this._gender;}
+		
+		return{
+			setUserid : setUserid,
+			setPassword : setPassword,
+			setSsn : setSsn,
+			getUserid : getUserid,
+			getPassword : getPassword,
+			getSsn : getSsn,
+			setAge : setAge,
+			setGender : setGender,
+			getAge : getAge,
+			getGender : getGender,
+			join : x=>{
+				member.setGender(x[0]);
+				member.setAge(x[1]);
+			}
+			
+		}})();
+		
+
+	
+	
+	
 	
