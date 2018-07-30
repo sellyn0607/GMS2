@@ -20,7 +20,9 @@ document.getElementById('findTeamIdButt').addEventListener('click',function(){ /
 
 document.getElementById('listButt').addEventListener('click',function(){ // 콜백함수 .....
 	
-	new Common().move('${context}','member','list','listForm');
+	router.move({
+		context : '${context}' , domain : 'member' , action : 'list', page : 'listForm'
+	})
 });
 
 

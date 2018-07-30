@@ -49,6 +49,8 @@ public class MemberDAOImpl implements MemberDAO{
 			bean.setPassword(rs.getString("password"));
 			bean.setRoll(rs.getString("roll"));
 			bean.setTeamId(rs.getString("team_id"));
+			bean.setAge(rs.getString("age"));
+			bean.setGender(rs.getString("gender"));
 			
 		}
 		
@@ -64,15 +66,10 @@ public class MemberDAOImpl implements MemberDAO{
 		try {
 			
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
-					createStatement().executeQuery(String.format(MemberQuery.UPDATE_MEMBER2.toString(),
-							member.getUserid(),member.getPassword().split("/")[0]));
+					createStatement().executeQuery(String.format(MemberQuery.UPDATE_MEMBER.toString(),
+							member.getPassword(),member.getRoll(),member.getTeamId(),member.getUserid()));
 			
-		while(rs.next())
-			{ 
-			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
-			createStatement().executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString(),
-					member.getPassword().split("/")[1],member.getUserid()));
-			}
+			System.out.println(rs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

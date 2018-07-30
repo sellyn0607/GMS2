@@ -12,7 +12,8 @@ public class LoginCommand extends Command{
 		setRequest(request);
 		setAction(request.getParameter("action"));
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
-		setPage(request.getParameter("page"));
+		setPage("mypage");
+		//setPage(request.getParameter("page"));
 		execute();
 	}
 	@Override
@@ -29,7 +30,7 @@ public class LoginCommand extends Command{
 		  		
 		  	}else {
 		  		request.setAttribute("match","TRUE");
-		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m).getUserid());
+		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m));
 		  	}
 		  	
 		 

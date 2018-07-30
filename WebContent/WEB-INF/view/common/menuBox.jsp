@@ -11,11 +11,12 @@
 			<script>
 			document.getElementById('adminButt').addEventListener('click',function(){ // 콜백함수 .....
 				
-				new Common().move('${context}','admin','move','main');
+				router.move({context : '${context}' , domain : 'admin', action : 'move', page : 'main'});
 			});
 			document.getElementById('findIdButt').addEventListener('click',function(){ // 콜백함수 .....
 				
-				new Common().move('${context}','member','move','findByIdForm');
+				router.move({context : '${context}' , domain : 'member', action : 'move', page : 'findByIdForm'});
+				
 			});
 			
 			</script>

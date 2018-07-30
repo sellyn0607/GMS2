@@ -1,46 +1,50 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="ctx" value="<%=application.getContextPath() %>" />
-
 
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="${ctx}/resources/css/style.css" />
-	<title>Document</title>
-	
-</head>
+<jsp:include page="../common/head.jsp"/>
 <body>
-<div id="wrapper">
-	<div id="header">
-		<div id="title-box">
-			<h1> GRADE MANAGEMENT SYSTEM</h1>
-		</div>
-		<div id="Login-box">
-			<a href="${ctx}/member.do?action=move&page=index">LOGOUT</a> 
-		</div>
+<table style="margin:100px 450px 0px" >
+	<tr>
+		<td rowspan="3" colspan="2"><img src="${img}/home/test.jpg" alt="" /></td>
+		<td>ID</td>
+		<td>${user.userid}</td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td>${user.name}</td>
 		
-		<div id="menu-box">
-			<ul id="menu">
-				<li><a href="">HOME</a></li>
-				<li><a href="">ABOUT</a></li>
-				<li><a href="${ctx}/admin.do?action=move&page=main">ADMIN</a></li>
-				<li><a href="${ctx}/member.do?action=move&page=findByIdForm">회원ID검색</a></li>
-				
-				
-			</ul>
-		</div>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td>${user.password}</td>
 		
-	</div> <!-- header end -->
-	<div id="content">
-		<div id="content-box">
-		<h1>WELCOM MY HOMEPAGE</h1>
-		</div>
-	</div>
-	<div id="footer"> 주소 : </div>
-</div>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td>${user.age}</td>
+		<td>팀명</td>
+		<td>${user.teamId}</td>
+		
+	</tr>
+	<tr>
+		<td>성별</td>
+		<td>${user.gender}</td>
+		<td>역할</td>
+		<td>${user.roll}</td>
+	</tr>
+</table>
+<br> <button id = "myPageUpdate" style="margin-left: 63%">Update 이동</button>
+<script>
+document.getElementById('myPageUpdate').addEventListener('click',function(){
+	router.move({context : '${context}',
+	domain : 'member',
+	action : 'move',
+	page : 'updateForm'
 	
+	})
+});
+</script>
 </body>
 </html>

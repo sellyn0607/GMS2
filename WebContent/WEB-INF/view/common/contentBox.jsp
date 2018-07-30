@@ -4,5 +4,5 @@
 		<h1>WELCOM MY HOMEPAGE</h1>
 		</div>
 		<div id="content-img">
-		<img src="${context}/resources/img/home/test.jpg" alt=""  /></div>
+		<img src="${context}/resources/img/home/test.jpg" style="margin: 50px 450px;" /></div>
 		</div>

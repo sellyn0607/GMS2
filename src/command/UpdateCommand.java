@@ -24,9 +24,12 @@ public class UpdateCommand extends Command{
 			System.out.println("업데이트 확인");
 			MemberBean m = new MemberBean();
 			m.setUserid(request.getParameter("userid"));
-			m.setPassword(String.format("%s/%s",request.getParameter("pw"), request.getParameter("npw")));
+			m.setPassword(request.getParameter("password"));
+			m.setRoll(request.getParameter("roll"));
+			m.setTeamId(request.getParameter("teamId"));
+			System.out.println("보내기전"+m);
 			MemberServiceImpl.getInstance().update(m);
-			
+			System.out.println(m);
 			break;
 		default:
 			break;

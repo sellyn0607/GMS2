@@ -24,7 +24,7 @@ public enum MemberQuery {
 		case COUNT_MEMBER:
 			query="select count(*) AS count FROM MEMBER"; break;
 		case UPDATE_MEMBER:
-			query="update member set PASSWORD='%s' where mem_id like '%s'"; 
+			query="update member set PASSWORD='%s',roll='%s',team_id='%s' where mem_id like '%s'"; 
 			break;
 		case UPDATE_MEMBER2:
 			query="select mem_id,password from member where mem_id like '%s' and password like '%s'";
@@ -37,7 +37,7 @@ public enum MemberQuery {
 			query="select mem_id,SSN,name,password,roll,team_id,age from member";
 			break;
 		case FIND_BY_ID :
-			query = "select mem_id,SSN,name,password,roll,team_id from member where mem_id like '%s'";
+			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where mem_id like '%s'";
 			break;
 		case FIND_BY_TEAMID:
 			query = "select mem_id,SSN,name,password,roll,team_id from member where team_id like '%s'";
