@@ -9,9 +9,10 @@
 				
 			</ul>
 			<script>
+			/* document.querySelector("#adminButt") */
 			document.getElementById('adminButt').addEventListener('click',function(){ // 콜백함수 .....
+				admin.check('${context}');
 				
-				router.move({context : '${context}' , domain : 'admin', action : 'move', page : 'main'});
 			});
 			document.getElementById('findIdButt').addEventListener('click',function(){ // 콜백함수 .....
 				

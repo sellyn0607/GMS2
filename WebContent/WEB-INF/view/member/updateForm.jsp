@@ -32,13 +32,13 @@
 		<td>역할</td>
 		<td><!-- <select name="roll"><option value="팀장">팀장</option><option value="팀원">팀원</option><option value="민폐">민폐</option>
 			</select> -->
-			 <input type="radio" id="roll_1" name="roll" value="팀장"/>팀장 <input type="radio" name="roll" id="roll_2"value="팀원"/>팀원
+			 <input type="radio" id="roll_1" name="roll" value="팀장"/>팀장 <input type="radio" name="roll" id="roll_2" value="팀원"/>팀원
 			</td>
 	</tr>
 </table>
-	<input type="hidden" name="userid" value="${user.userid }" />
-	<input type="hidden" name="action" value="update"/>
-	<input type="hidden" name="action" value="mypage"/>
+	<%-- <input type="hidden" name="userid" value="${user.userid }" /> --%>
+	<!-- <input type="hidden" name="action" value="update"/> -->
+	
 	<br /><input id="updateBt" style="margin-left: 70%; width=100px "  type="button" value="수정" />
 </form>
 <script>
@@ -50,7 +50,7 @@ for(var i=0; i<team.options.length;i++){
 		team.options[i].setAttribute("selected","selected");
 	}
 }
-for(var i=1;i<=4; i++){
+for(var i=1;i<=2; i++){
 	if(document.getElementById('roll_'+i).value==='${user.roll}'){
 		document.getElementById('roll_'+i).checked = true;
 	}
@@ -64,6 +64,9 @@ document.getElementById('updateBt').addEventListener('click',function(){
 	if(x.checker){
 	form.action="${context}/member.do";
 	form.method="post";
+	var node = document.createElement('input');
+	form.appendChild(node);
+	node.innerHTML = '<input type="hidden" name="action" value="update"/>'
 	form.submit();
 	alert("회원정보가 수정되었습니다.");
 	}else{

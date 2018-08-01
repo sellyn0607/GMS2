@@ -22,10 +22,8 @@ public class ListCommand extends Command{
 	public void execute() {
 		switch(Domain.valueOf(getDomain().toUpperCase())) {
 		
-		case MEMBER:
+		case ADMIN:
 			
-			List<MemberBean> lst= MemberServiceImpl.getInstance().selectAllMember();
-			System.out.println(lst);
 			request.setAttribute("list", MemberServiceImpl.getInstance().selectAllMember());
 			
 		break;

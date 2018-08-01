@@ -26,7 +26,6 @@ public class AdminController extends HttpServlet {
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Sentry.init(request,response);
-		System.out.println("어드민 컨트롤러");
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
 				Carrier.forword(request, response);
@@ -45,9 +44,7 @@ public class AdminController extends HttpServlet {
 			Carrier.redirect(request, response,"");
 			break;
 		case FINDID:
-			
-			
-			Carrier.redirect(request, response,"");
+			Carrier.forword(request, response);
 			break;
 		case FINDTEAMID:
 			
@@ -57,6 +54,7 @@ public class AdminController extends HttpServlet {
 			//System.err.println(request.getAttribute("count"));
 			break;
 		case LIST:
+			Carrier.forword(request, response);
 			request.getAttribute("list");
 			break;
 		case LOGIN:

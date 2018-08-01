@@ -10,12 +10,16 @@
 <script>
 document.getElementById('homeButt').addEventListener('click',function(){ // 콜백함수 .....
 	
-	new Common().move('${context}','member','move','index');
+	router.move({
+		context : '${context}' , domain : 'common'
+	})
 });
 
 document.getElementById('findTeamIdButt').addEventListener('click',function(){ // 콜백함수 .....
 	
-	new Common().move('${context}','member','move','findByTeamIdForm');
+	router.move({
+		context : '${context}' , domain : 'member' , action : 'move', page : 'findByTeamIdForm'
+	})
 });
 
 document.getElementById('listButt').addEventListener('click',function(){ // 콜백함수 .....

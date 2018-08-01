@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import enums.*;
 
@@ -30,34 +30,31 @@ public class MemberController extends HttpServlet {
 		Sentry.init(request,response);
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
-			System.out.println("무브 컨트롤러");
 			if(Sentry.cmd.getPage().equals("index")) {
 				Carrier.redirect(request, response,"");
 				
 			}
 				Carrier.forword(request, response);//캐리어로 보냄 ?
-			//request.getRequestDispatcher(String.format("/WEB-INF/view/member/%s.jsp",request.getParameter("page"))).forward(request, response);
+			
 		break;
 		
 		case JOIN:
-			System.out.println("멤버 컨트롤러 ");
 			Carrier.forword(request, response);
 			break;
 		
 		case UPDATE:
-				//Carrier.redirect(request, response,"");
+			Carrier.forword(request, response);
 		break;
 		case DELETE:
+			
 			Carrier.redirect(request, response,"");
 			break;
 		case FINDID:
-			
-			
-			Carrier.redirect(request, response,"");
-			break;
+	
+		break;
 		case FINDTEAMID:
 			
-			Carrier.redirect(request, response,"");
+			Carrier.forword(request, response);
 			break;
 		case COUNT:
 			//System.err.println(request.getAttribute("count"));
@@ -68,9 +65,8 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			
 			if(request.getAttribute("match").equals("TRUE")){
-				request.getSession().setAttribute("user",request.getAttribute("user"));
-			/*	Sentry.cmd.setPage("mypage");
-				Sentry.cmd.execute();*/
+				
+			
 				Carrier.forword(request, response);
 				
 			
@@ -81,9 +77,6 @@ public class MemberController extends HttpServlet {
 			break;
 		  	}
 		
-		
-
-
 		}
 		
 		

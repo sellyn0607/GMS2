@@ -8,7 +8,7 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<jsp:include page="../common/titleBox.jsp"/>
+		<jsp:include page="titleBox.jsp"/>
 		<div id="Login-box">
 			&nbsp;&nbsp;
 		</div>

@@ -41,7 +41,52 @@
 		<!-- </form> -->
 	</div>
 	<script>
-		document.getElementById('overButt')
+	 document.getElementById('joinButt').addEventListener(
+				'click',
+				function() {
+
+					var form = document.getElementById('joinForm');
+					var x = service.nullChecker([ form.userid.value,
+							form.pw.value, form.name.value, form.roll.value,
+							form.team_id.value, form.ssn1.value,
+							form.ssn2.value ]);
+					if (x.checker) {
+						form.action = "${context}/member.do";
+						form.method = "post";
+						member.join([ form.ssn2.value, form.ssn1.value ]);
+						var arr = {
+							name : [ 'action', 'gender', 'age' ],
+							value : [ 'join', member.getGender(),
+									member.getAge() ]
+						};
+
+						/* var j=[{name : 'action',value : 'join'},
+							{name : 'gender',value : member.getGender()},
+							{name : 'age',value : member.getAge()}]; */
+
+						/* var arr=['action','gender','age'];
+						var arr2=['join','','']; */
+
+						for (var i = 0; i < 3; i++) {
+							var node = document.createElement('input');
+							node.setAttribute('type', 'hidden');
+							node.setAttribute('name', arr.name[i]);
+							node.setAttribute('value', arr.value[i]);
+							form.appendChild(node);
+						}
+
+						/*form.gender.value = member.getGender();
+						form.age.value = member.getAge(); */
+
+						form.submit();
+
+					} else {
+						alert(x.text);
+
+					}
+				}); 
+		document
+				.getElementById('overButt')
 				.addEventListener(
 						'click',
 						function() {
@@ -50,8 +95,11 @@
 							var node = document.createElement('input');
 							node.innerHTML = '<input type="hidden" name="action" value="findid"/>'
 							form2.appendChild(node);
+							var node2 = document.createElement('input');
+							node2.innerHTML = '<input type="hidden" name="page" value=""/>'
+							form2.appendChild(node2);
 							var node3 = document.createElement('input');
-							node3.innerHTML = '<input type="hidden" name="userid" value=form2.userid.value/>'
+							node3.innerHTML = '<input type="hidden" name="userid" value=form.userid.value/>'
 							form2.appendChild(node3);
 							form2.submit();
 

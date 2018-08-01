@@ -37,11 +37,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberBean findById(MemberBean member) {
 		MemberBean bean =new MemberBean();
 			try {
-			
+			System.out.println("파인드바이 아이디 임플 들어옴");
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeQuery(String.format(MemberQuery.FIND_BY_ID.toString(),member.getUserid()));
 			
-		while(rs.next()) {
+		if(rs.next()) {
 			
 			bean.setUserid(rs.getString("mem_id"));
 			bean.setName(rs.getString("name"));
@@ -51,7 +51,12 @@ public class MemberDAOImpl implements MemberDAO{
 			bean.setTeamId(rs.getString("team_id"));
 			bean.setAge(rs.getString("age"));
 			bean.setGender(rs.getString("gender"));
+			bean.setOverlap(true);
+			System.out.println("파인드 바이 아이디 값 있음");
 			
+		}else {
+			System.out.println("파인드 바이 아이디 값 없음");
+			bean.setOverlap(false);
 		}
 		
 		} catch (Exception e) {
@@ -110,6 +115,7 @@ public class MemberDAOImpl implements MemberDAO{
 				bean.setRoll(rs.getString("roll"));
 				bean.setTeamId(rs.getString("team_id"));
 				bean.setAge(rs.getString("age"));
+				bean.setGender(rs.getString("gender"));
 				lst.add(bean);
 				
 			}

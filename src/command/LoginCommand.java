@@ -30,7 +30,9 @@ public class LoginCommand extends Command{
 		  		
 		  	}else {
 		  		request.setAttribute("match","TRUE");
-		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m));
+/*		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m));*/
+		  		request.getSession().setAttribute("user",MemberServiceImpl.getInstance().findById(m));
+		  		
 		  	}
 		  	
 		 

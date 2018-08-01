@@ -9,30 +9,30 @@
 	<tr>
 		<td rowspan="3" colspan="2"><img src="${img}/home/test.jpg" alt="" /></td>
 		<td>ID</td>
-		<td>${user.userid}</td>
+		<td>${findId.userid}</td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td>${user.name}</td>
+		<td>${findId.name}</td>
 		
 	</tr>
 	<tr>
 		<td>비밀번호</td>
-		<td>${user.password}</td>
+		<td>${findId.password}</td>
 		
 	</tr>
 	<tr>
 		<td>나이</td>
-		<td>${user.age}</td>
+		<td>${findId.age}</td>
 		<td>팀명</td>
-		<td>${user.teamId}</td>
+		<td>${findId.teamId}</td>
 		
 	</tr>
 	<tr>
 		<td>성별</td>
-		<td>${user.gender}</td>
+		<td>${findId.gender}</td>
 		<td>역할</td>
-		<td>${user.roll}</td>
+		<td>${findId.roll}</td>
 	</tr>
 </table>
 <br> <button id = "myPageUpdate" style="margin-left: 54%">Update 이동</button>

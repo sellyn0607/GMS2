@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<% String ctx = application.getContextPath(); %>
+
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>아이디찾기</title>
-</head>
+<jsp:include page="../common/head.jsp"/>
 <body>
 <h3>아이디찾기</h3>
-<form action="<%=ctx%>/member.do">
-아이디 : <input type="text" name="userid"/><br />
-<input type="hidden" name="action" value="finbyid"/>
-<input type="hidden" name="page" value="findById"/>
-<input type="submit" value="확인"/>
+<form id="findByIdForm">
+아이디 : <input id="userid" type="text" name="userid"/><br />
+<input type="hidden" name="action" value="findid"/>
+<input type="hidden" name="page" value="findByIdResult"/>
+<input type="button" id="findByIdButt" value="확인"/>
 </form>
+<script>
+	document.getElementById('findByIdButt').addEventListener('click',function(){
+	
+		var form = document.getElementById('findByIdForm');
+		var x = service.nullChecker([form.userid.value]);
+		if(x.checker){
+			form.action="${context}/member.do";
+			form.method="get";
+			form.submit();
+		}else
+			alert(x.text);
+		
+		
+	});
+</script>
 </body>
 </html>

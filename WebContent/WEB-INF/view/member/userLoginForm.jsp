@@ -16,10 +16,8 @@
 	</form></div>
 	<script>
 	document.getElementById('loginFormBtn').addEventListener('click',function(){
-		/* var member = new Member(); */
+	
 		var form = document.getElementById('loginForm');
-	/* 	member.setUserid(form.userid.value);
-		member.setPassword(form.pw.value); */
 		var x = service.nullChecker([form.userid.value,form.pw.value]);
 		if(x.checker){
 			form.action="${context}/member.do";

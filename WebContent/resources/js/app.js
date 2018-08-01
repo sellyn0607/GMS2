@@ -29,6 +29,24 @@ var service =(()=>{
 	};
 })();
 
+var admin = (()=>{
+	return {
+	check : (x) =>{
+		var isAdmin = confirm('관리자입니까?');
+		if(isAdmin){
+			
+			var password=prompt('관리자 비밀번호를 입력하세요');
+			
+			if(password==1){
+				router.move({context : x , domain : 'admin', action : 'list', page : 'main'});
+			}
+		}else{
+			alert('관리자만 접근이 허용됩니다.');
+		}
+	},
+	
+};})();
+
 	var member=(()=> {
 		var _userid,_password,_ssn,_age,_gender;
 		

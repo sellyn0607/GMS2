@@ -34,7 +34,7 @@ public enum MemberQuery {
 			break;
 		
 		case SELECT_ALLMEMBER:
-			query="select mem_id,SSN,name,password,roll,team_id,age from member";
+			query="select mem_id,SSN,name,password,roll,team_id,age,gender from member";
 			break;
 		case FIND_BY_ID :
 			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where mem_id like '%s'";
