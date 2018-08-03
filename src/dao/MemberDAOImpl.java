@@ -46,13 +46,13 @@ public class MemberDAOImpl implements MemberDAO{
 			
 		if(rs.next()) {
 			
-			mem.setUserid(rs.getString("mem_id"));
+			mem.setUserid(rs.getString("userid"));
 			System.out.println(mem.getUserid());
 			mem.setName(rs.getString("name"));
 			mem.setSsn(rs.getString("SSN"));
 			mem.setPassword(rs.getString("password"));
 			mem.setRoll(rs.getString("roll"));
-			mem.setTeamId(rs.getString("team_id"));
+			mem.setTeamId(rs.getString("teamid"));
 			mem.setAge(rs.getString("age"));
 			mem.setGender(rs.getString("gender"));
 			
@@ -108,12 +108,12 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			while(rs.next()) {
 				MemberBean bean = new MemberBean();
-				bean.setUserid(rs.getString("mem_id"));
+				bean.setUserid(rs.getString("userid"));
 				bean.setName(rs.getString("name"));
 				bean.setSsn(rs.getString("SSN"));
 				bean.setPassword(rs.getString("password"));
 				bean.setRoll(rs.getString("roll"));
-				bean.setTeamId(rs.getString("team_id"));
+				bean.setTeamId(rs.getString("teamid"));
 				bean.setAge(rs.getString("age"));
 				bean.setGender(rs.getString("gender"));
 				lst.add(bean);
@@ -178,7 +178,7 @@ public class MemberDAOImpl implements MemberDAO{
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("column",member.split("/")[0]);
 		map.put("value",member.split("/")[1]);
-		map.put("table",Domain.ADMIN);
+		map.put("table",Domain.MEMBER);
 		q.play(map);
 		for(Object s: q.getList()) {
 			list.add((MemberBean)s);
@@ -226,12 +226,12 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			while(rs.next()) {
 				MemberBean bean = new MemberBean();
-				bean.setUserid(rs.getString("mem_id"));
+				bean.setUserid(rs.getString("userid"));
 				bean.setName(rs.getString("name"));
 				bean.setSsn(rs.getString("SSN"));
 				bean.setPassword(rs.getString("password"));
 				bean.setRoll(rs.getString("roll"));
-				bean.setTeamId(rs.getString("team_id"));
+				bean.setTeamId(rs.getString("teamid"));
 				bean.setGender(rs.getString("gender"));
 				bean.setAge(rs.getString("age"));
 				lst.add(bean);

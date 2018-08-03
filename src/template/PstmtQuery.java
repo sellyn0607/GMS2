@@ -13,16 +13,17 @@ public class PstmtQuery extends QueryTemplate{
 	void initialize() {
 		map.put("sql", String.format(
 				"SELECT "+ ColumnFinder.find(Domain.MEMBER)
-				+" FROM %s WHERE %s LIKE ?", map.get("table"),map.get("column")));
+				+" FROM %s WHERE %s LIKE ? ", map.get("table"),map.get("column")));
 		
 		
 	}
 
 	@Override
 	void startPlay() {
-		//String aa = "%"+map.get("value").toString()+"%";
+		String aa = "%"+map.get("value").toString()+"%";
+		System.out.println(aa);
 		try {
-			pstmt=DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("spl"));
+			pstmt=DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
 			pstmt.setString(1, "%"+map.get("value").toString()+"%");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -45,7 +46,7 @@ public class PstmtQuery extends QueryTemplate{
 					mem.setPassword(rs.getString("password"));
 					mem.setRoll(rs.getString("roll"));
 					mem.setSsn(rs.getString("ssn"));
-					mem.setTeamId(rs.getString("team_id"));
+					mem.setTeamId(rs.getString("teamid"));
 					list.add(mem);
 				}
 		} catch (Exception e) {

@@ -9,11 +9,11 @@ public enum MemberQuery {
 		
 		switch (this) {
 		case LOGIN: 
-			query="SELECT MEM_ID userid, TEAM_ID, NAME, SSN,ROLL"+
-					"  , PASSWORD FROM MEMBER WHERE MEM_ID LIKE '%s' and PASSWORD LIKE '%s'";
+			query="SELECT userid, teamid, NAME, SSN,ROLL"+
+					"  , PASSWORD FROM MEMBER WHERE userid LIKE '%s' and PASSWORD LIKE '%s'";
 			break;
 		case INSERT_MEMBAER:
-			query="insert into member(mem_id,password,name,ssn,age,roll,team_id,gender) values('%s','%s','%s','%s','%s','%s','%s','%s') ";
+			query="insert into member(userid,password,name,ssn,age,roll,teamid,gender) values('%s','%s','%s','%s','%s','%s','%s','%s') ";
 			break;
 		case SSN_LIST:
 			query="select mem_age from teamw "; break;
@@ -25,27 +25,27 @@ public enum MemberQuery {
 		case COUNT_MEMBER:
 			query="select count(*) AS count FROM MEMBER"; break;
 		case UPDATE_MEMBER:
-			query="update member set PASSWORD='%s',roll='%s',team_id='%s' where mem_id like '%s'"; 
+			query="update member set PASSWORD='%s',roll='%s',teamid='%s' where userid like '%s'"; 
 			break;
 		case UPDATE_MEMBER2:
-			query="select mem_id,password from member where mem_id like '%s' and password like '%s'";
+			query="select userid,password from member where userid like '%s' and password like '%s'";
 			break;
 		case DELETE_MEMBER:
-			query="delete from member where mem_id like '%s'";
+			query="delete from member where userid like '%s'";
 			break;
 		
 		case SELECT_ALLMEMBER:
-			query="select mem_id,SSN,name,password,roll,team_id,age,gender from member";
+			query="select userid,SSN,name,password,roll,teamid,age,gender from member";
 			break;
 		case FIND_BY_ID :
-			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where mem_id like '%s'";
+			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where userid like '%s'";
 			break;
 		case FIND_BY_TEAMID:
-			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where team_id like '%s'";
+			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where teamid like '%s'";
 			break;
 			
 		case FIND_BY_NAME:
-			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where name like '%s'";
+			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where name like '%s'";
 			break;
 		default:
 			break;
