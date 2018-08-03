@@ -20,13 +20,19 @@ public class CountCommand extends Command{
 		
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-		request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());
-		
-		
-		  	
-		 
-			
+			request.setAttribute("count",MemberServiceImpl.getInstance().memberCount());
 		break;
+		case ADMIN:
+			int a = MemberServiceImpl.getInstance().memberCount();
+			
+			if(a/5==0) {
+				request.setAttribute("count",a/5);
+			}else {
+				request.setAttribute("count",a/5+1);
+			}
+			
+				
+			break;
 		default:
 			break;
 		}

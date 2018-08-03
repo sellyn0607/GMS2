@@ -35,9 +35,17 @@
 		<td>${user.roll}</td>
 	</tr>
 </table>
-<br> <button id = "myPageUpdate" style="margin-left: 54%">Update 이동</button>
+<br> 
+	<button id ="maingo" type="button" style="margin-left:52%;">메인페이지</button>	
+	<button id = "myPageUpdate" style="margin-left: 2%">Update 이동</button>
 	<button id = "myPageDelete" style="margin-left: 2%"> 회원탈퇴 </button>
+	
 <script>
+document.getElementById('maingo').addEventListener('click',function(){
+	router.move({context : '${context}',
+	domain : 'common'
+	})
+});
 document.getElementById('myPageUpdate').addEventListener('click',function(){
 	router.move({context : '${context}',
 	domain : 'member',

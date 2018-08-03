@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="Login-box">
-			<button id="moveLoginForm" >LOGIN</button>
-			 &nbsp; &nbsp; <button id="joinLoginForm" >JOIN</button>
+			<button type = "button" id="moveLoginForm" >LOGIN</button>
+			 &nbsp; &nbsp; <button type = "button" id="joinLoginForm" >JOIN</button>
 		</div>
 <script>
 document.getElementById('moveLoginForm').addEventListener('click',function(){ // 콜백함수 .....

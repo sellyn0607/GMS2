@@ -26,6 +26,14 @@ public class ListCommand extends Command{
 			
 			request.setAttribute("list", MemberServiceImpl.getInstance().selectAllMember());
 			
+			int a = MemberServiceImpl.getInstance().memberCount();
+			
+			/*if(a%5==0) {
+				request.setAttribute("count",a/5);
+			}else {
+				request.setAttribute("count",a/5+1);
+			}*/
+			request.setAttribute("count", (a%5==0)? a/5 : a/5+1);
 		break;
 		default:
 			break;	

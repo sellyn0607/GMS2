@@ -2,15 +2,19 @@ package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
+import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
 import factory.*;
 
 import pool.DBConstant;
 import service.MemberServiceImpl;
+import template.PstmtQuery;
+import template.QueryTemplate;
 
 public class MemberDAOImpl implements MemberDAO{
 	private static MemberDAO instance = new MemberDAOImpl();
@@ -169,7 +173,19 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	@Override
 	public List<MemberBean> Search(String member) {
-		List<MemberBean> lst=new ArrayList<>();
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("column",member.split("/")[0]);
+		map.put("value",member.split("/")[1]);
+		map.put("table",Domain.ADMIN);
+		q.play(map);
+		for(Object s: q.getList()) {
+			list.add((MemberBean)s);
+		}
+		
+		return list;
+/*		List<MemberBean> lst=new ArrayList<>();
 		String option = member.split("/")[0];
 		String text = member.split("/")[1];
 		String sql= "select mem_id,SSN,name,password,roll,team_id,age,gender from member " 
@@ -199,7 +215,7 @@ public class MemberDAOImpl implements MemberDAO{
 			e.printStackTrace();
 		}
 		
-		return lst;
+		return lst;*/
 	}
 	@Override
 	public List<MemberBean> findByName(String member) {

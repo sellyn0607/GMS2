@@ -3,7 +3,14 @@
 <html lang="en">
 <jsp:include page="../common/head.jsp" />
 <body>
-	<div id="user">
+<div id="wrapper">
+<div id="header">
+<jsp:include page="../common/titleBox.jsp"/>
+</div>
+
+	<div id="content">
+	<div id="content-box" style="text-align: left;">
+	<div id="user" >
 	<h1>로그인</h1>
 	<form id="loginForm"  style="border:1px solid black;">
 	&nbsp; 아이디 <br />
@@ -13,7 +20,7 @@
 	 <input type="hidden" name="action" value="login" />
 	<!-- <input type="hidden" name="page" value="mypage"/> -->
 	<input id="loginFormBtn" type="button" value="로그인"><br>
-	</form></div>
+	</form></div></div></div></div>
 	<script>
 	document.getElementById('loginFormBtn').addEventListener('click',function(){
 	

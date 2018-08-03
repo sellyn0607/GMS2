@@ -30,6 +30,15 @@
 				<td>${member.roll}</td>
 				<td>${member.teamId}</td>
 			</tr></c:forEach>
+			<tr>
+				<td colspan="6" style="height: 30px">
+			
+					<c:forEach begin="1" end="${count}"  step="1" var="index" >
+						<span>${index}</span>
+					</c:forEach>
+				</td>
+			
+			</tr>
 		</table>
 		
 	
