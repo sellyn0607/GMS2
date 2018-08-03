@@ -174,7 +174,7 @@ public class MemberDAOImpl implements MemberDAO{
 		String text = member.split("/")[1];
 		String sql= "select mem_id,SSN,name,password,roll,team_id,age,gender from member " 
 				+ " where "+option+ " like "+"'"+text+"'";
-		//?
+		
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeQuery(sql);
