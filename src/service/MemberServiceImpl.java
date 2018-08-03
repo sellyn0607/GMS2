@@ -40,9 +40,9 @@ public class MemberServiceImpl implements MemberService{
 		return null;
 	}
 	@Override
-	public List<MemberBean> findBySearch(String member) {
+	public List<MemberBean> Search(String member) {
 		// TODO Auto-generated method stub
-		return MemberDAOImpl.getInstance().findBySearch(member);
+		return MemberDAOImpl.getInstance().Search(member);
 	}
 	@Override
 	public MemberBean login(MemberBean member) {
@@ -57,6 +57,11 @@ public class MemberServiceImpl implements MemberService{
 	public int memberCount() {
 		// TODO Auto-generated method stub
 		return MemberDAOImpl.getInstance().countMember();
+	}
+	@Override
+	public List<MemberBean> findByName(String member) {
+		
+		return MemberDAOImpl.getInstance().findByName(member);
 	}
 	
 

@@ -22,13 +22,9 @@ public class FindIdCommand extends Command{
 		case MEMBER:
 			MemberBean me = new MemberBean();
 			me.setUserid(request.getParameter("userid"));
+			System.out.println(me.getUserid());
 			me =MemberServiceImpl.getInstance().findById(me);
-			System.out.println(me.isOverlap());
-			if(me.isOverlap()) {
-				request.setAttribute("over","FALSE");
-			}else {
-				request.setAttribute("over","TRUE");
-			}			
+				
 			break;
 			
 		case ADMIN:
@@ -37,6 +33,7 @@ public class FindIdCommand extends Command{
 		m =MemberServiceImpl.getInstance().findById(m);
 		System.out.println(m);
 		request.setAttribute("findId", m);
+		
 		/*System.out.println(m);
 		request.setAttribute("findById", m);*/
 		break;

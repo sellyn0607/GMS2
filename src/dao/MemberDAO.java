@@ -7,7 +7,8 @@ import domain.*;
 public interface MemberDAO {
 	public void insertMember(MemberBean member);
 	public MemberBean findById(MemberBean member);
-	public List<MemberBean> findBySearch(String member);
+	public List<MemberBean> Search(String member);
+	public List<MemberBean> findByName(String member);
 	public void updateMember(MemberBean member);
 	public void deleteMember(MemberBean member);
 	public List<MemberBean> selectAllMember();

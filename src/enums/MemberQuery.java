@@ -2,10 +2,11 @@ package enums;
 
 public enum MemberQuery {
 	LOGIN,INSERT_MEMBAER,SSN_LIST,TEST,TEST2,COUNT_MEMBER,UPDATE_MEMBER,UPDATE_MEMBER2,DELETE_MEMBER,
-	SELECT_ALLMEMBER,DELETE_MEMBER2,FIND_BY_ID,FIND_BY_TEAMID;
+	SELECT_ALLMEMBER,DELETE_MEMBER2,FIND_BY_ID,FIND_BY_TEAMID,FIND_BY_NAME;
 	@Override
 	public String toString() {
 		String query = "";
+		
 		switch (this) {
 		case LOGIN: 
 			query="SELECT MEM_ID userid, TEAM_ID, NAME, SSN,ROLL"+
@@ -40,7 +41,13 @@ public enum MemberQuery {
 			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where mem_id like '%s'";
 			break;
 		case FIND_BY_TEAMID:
-			query = "select mem_id,SSN,name,password,roll,team_id from member where team_id like '%s'";
+			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where team_id like '%s'";
+			break;
+			
+		case FIND_BY_NAME:
+			query = "select mem_id,SSN,name,password,roll,team_id,age,gender from member where name like '%s'";
+			break;
+		default:
 			break;
 		}
 		return query;

@@ -14,7 +14,7 @@ import enums.*;
 
 import command.Carrier;
 import command.FindIdCommand;
-import command.FindTeamIdCommand;
+import command.FindSearchCommand;
 import command.ListCommand;
 import command.Sentry;
 import command.UpdateCommand;
@@ -50,9 +50,11 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response,"");
 			break;
 		case FINDID:
-	
+			Carrier.redirect(request, response,"");
+			
+			
 		break;
-		case FINDTEAMID:
+		case FINDSEARCH:
 			
 			Carrier.forword(request, response);
 			break;

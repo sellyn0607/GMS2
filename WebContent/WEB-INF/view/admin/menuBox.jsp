@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="menu-box">
+<div id="menu-box" style="text-align: right;">
 			<ul id="menu">
-				<li><a id="homeButt">HOME</a></li>
-				<li><a href="">ABOUT</a></li>
-				<li><a id="findTeamIdButt">회원 TEAMID 조회</a></li>
-				<li><a id="listButt">회원 List</a></li>
+				<li ><a id="homeButt">HOME</a></li>
+				<li ><a href="">ABOUT</a></li>
+				<li ><a id="findTeamIdButt">회원 TEAMID 조회</a></li>
+				<li ><a id="listButt">회원 List</a></li>
 			</ul>
 		</div>
 <script>

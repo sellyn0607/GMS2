@@ -27,8 +27,8 @@ public class Commander {
 		case FINDID:
 			cmd = new FindIdCommand(request);
 			break;
-		case FINDTEAMID:
-			cmd = new FindTeamIdCommand(request);
+		case FINDSEARCH:
+			cmd = new FindSearchCommand(request);
 			break;
 		case LIST:
 			cmd = new ListCommand(request);

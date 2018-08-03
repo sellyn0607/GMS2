@@ -12,7 +12,7 @@ import enums.*;
 
 import command.Carrier;
 import command.FindIdCommand;
-import command.FindTeamIdCommand;
+import command.FindSearchCommand;
 import command.ListCommand;
 import command.Sentry;
 import command.UpdateCommand;
@@ -46,9 +46,8 @@ public class AdminController extends HttpServlet {
 		case FINDID:
 			Carrier.forword(request, response);
 			break;
-		case FINDTEAMID:
-			
-			Carrier.redirect(request, response,"");
+		case FINDSEARCH:
+			Carrier.forword(request, response);
 			break;
 		case COUNT:
 			//System.err.println(request.getAttribute("count"));

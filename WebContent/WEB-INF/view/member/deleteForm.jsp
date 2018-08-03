@@ -9,9 +9,6 @@
 <form id="deleteForm" style="border:1px solid black">
 아이디 : ${user.userid}<br /> <br>
 비밀번호 : <br /> &nbsp;<input type="password" id="pw" name ="pw" /><br />
-<!-- <input type="hidden" name="action" value="delete"/> -->
-<%-- <input type="hidden" name="userid" value="${user.userid}"/> --%>
-<!-- <input type="hidden" name="page" value="memberDelete"/> -->
 <br />
 &nbsp; <input id="deleteButt" type="button" value="확인"/>
 </form>

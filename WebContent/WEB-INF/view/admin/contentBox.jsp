@@ -3,8 +3,16 @@
 
 <div id="content">
 <div id="content-box">
-
-		<table id="contentBoxTab" >
+	<div id="contentBoxSearch" style="text-align: left; margin-left: 315px;"> 
+	<select id="contentSelect" name="contentSelect" >
+			<option value="none">검색 조건</option>
+			<option value="findid">아이디</option>
+			<option value="name">이 름</option>
+			<option value="team_id">팀명</option></select>
+	<input type="text" id='searchText' placeholder="검색어 입력"  /> <button id ="searchButt" style="height :24px; width:24px; 
+	background-image: url('${img}/home/bb.jpg')" ></button>
+	</div><br>
+		<table id="contentBoxTab" style="width:55% ">	
 			<tr id="contentBoxMeta">
 				<th>아이디</th>
 				<th>이 름</th>
@@ -27,18 +35,10 @@
 	
 		</div></div>
 <script>
-	/* document.getElementById('contentBoxMeta').className='bgcolorisYellow'; */
-	
-var x = document.querySelectorAll('.userName');
-for (i in x){
-	x[i].style.color = 'blue';
-	x[i].style.cursor = 'pointer';
-	x[i].addEventListener('click',function(){
-		location.href='${context}/admin.do?action=findid&page=memberDetail&userid='+this.getAttribute('id');
-	
-		
-	});
-}
+admin.main('${context}');
+
+
+
 
 	
 	

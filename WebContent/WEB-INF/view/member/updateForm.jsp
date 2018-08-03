@@ -67,6 +67,9 @@ document.getElementById('updateBt').addEventListener('click',function(){
 	var node = document.createElement('input');
 	form.appendChild(node);
 	node.innerHTML = '<input type="hidden" name="action" value="update"/>'
+		var node1 = document.createElement('input');
+	form.appendChild(node1);
+	node1.innerHTML = '<input type="hidden" name="page" value="mypage"/>'
 	form.submit();
 	alert("회원정보가 수정되었습니다.");
 	}else{

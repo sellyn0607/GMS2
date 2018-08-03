@@ -21,8 +21,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void insertMember(MemberBean member) {
 		try {
-			System.out.println(member);
-			//(mem_id,password,name,ssn,age,roll,team_id,gender,subject)
+			
 			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
 			createStatement().executeUpdate(String.format(MemberQuery.INSERT_MEMBAER.toString(),member.getUserid(),
 					member.getPassword(),member.getName(),member.getSsn(),member.getAge(),
@@ -35,35 +34,32 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	@Override
 	public MemberBean findById(MemberBean member) {
-		MemberBean bean =new MemberBean();
+		MemberBean mem =new MemberBean();
 			try {
-			System.out.println("파인드바이 아이디 임플 들어옴");
+			
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
-			createStatement().executeQuery(String.format(MemberQuery.FIND_BY_ID.toString(),member.getUserid()));
+			createStatement().executeQuery(String.format(MemberQuery.FIND_BY_ID.toString(),member.getUserid() ));
 			
 		if(rs.next()) {
 			
-			bean.setUserid(rs.getString("mem_id"));
-			bean.setName(rs.getString("name"));
-			bean.setSsn(rs.getString("SSN"));
-			bean.setPassword(rs.getString("password"));
-			bean.setRoll(rs.getString("roll"));
-			bean.setTeamId(rs.getString("team_id"));
-			bean.setAge(rs.getString("age"));
-			bean.setGender(rs.getString("gender"));
-			bean.setOverlap(true);
-			System.out.println("파인드 바이 아이디 값 있음");
+			mem.setUserid(rs.getString("mem_id"));
+			System.out.println(mem.getUserid());
+			mem.setName(rs.getString("name"));
+			mem.setSsn(rs.getString("SSN"));
+			mem.setPassword(rs.getString("password"));
+			mem.setRoll(rs.getString("roll"));
+			mem.setTeamId(rs.getString("team_id"));
+			mem.setAge(rs.getString("age"));
+			mem.setGender(rs.getString("gender"));
 			
-		}else {
-			System.out.println("파인드 바이 아이디 값 없음");
-			bean.setOverlap(false);
+			
 		}
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	
-		return bean;
+		return mem;
 	}
 	@Override
 	public void updateMember(MemberBean member) {
@@ -74,7 +70,7 @@ public class MemberDAOImpl implements MemberDAO{
 					createStatement().executeQuery(String.format(MemberQuery.UPDATE_MEMBER.toString(),
 							member.getPassword(),member.getRoll(),member.getTeamId(),member.getUserid()));
 			
-			System.out.println(rs);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -172,12 +168,16 @@ public class MemberDAOImpl implements MemberDAO{
 		return count;
 	}
 	@Override
-	public List<MemberBean> findBySearch(String member) {
+	public List<MemberBean> Search(String member) {
 		List<MemberBean> lst=new ArrayList<>();
+		String option = member.split("/")[0];
+		String text = member.split("/")[1];
+		String sql= "select mem_id,SSN,name,password,roll,team_id,age,gender from member " 
+				+ " where "+option+ " like "+"'"+text+"'";
 		
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
-			createStatement().executeQuery(String.format(MemberQuery.FIND_BY_TEAMID.toString(),member));
+			createStatement().executeQuery(sql);
 			
 			while(rs.next()) {
 				MemberBean bean = new MemberBean();
@@ -187,12 +187,43 @@ public class MemberDAOImpl implements MemberDAO{
 				bean.setPassword(rs.getString("password"));
 				bean.setRoll(rs.getString("roll"));
 				bean.setTeamId(rs.getString("team_id"));
+				bean.setGender(rs.getString("gender"));
+				bean.setAge(rs.getString("age"));
+				
 				lst.add(bean);
 				
 			}
 			
 		
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return lst;
+	}
+	@Override
+	public List<MemberBean> findByName(String member) {
+		List<MemberBean> lst=new ArrayList<>();
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USERID, DBConstant.USERPW).getConnection().
+					createStatement().executeQuery(String.format(MemberQuery.FIND_BY_NAME.toString(),member));
+			
+			while(rs.next()) {
+				MemberBean bean = new MemberBean();
+				bean.setUserid(rs.getString("mem_id"));
+				bean.setName(rs.getString("name"));
+				bean.setSsn(rs.getString("SSN"));
+				bean.setPassword(rs.getString("password"));
+				bean.setRoll(rs.getString("roll"));
+				bean.setTeamId(rs.getString("team_id"));
+				bean.setGender(rs.getString("gender"));
+				bean.setAge(rs.getString("age"));
+				lst.add(bean);
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

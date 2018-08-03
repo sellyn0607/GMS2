@@ -15,24 +15,22 @@ var service =(()=>{
 				}
 			}
 			return j;
-			/*var ok = true ;
-			for(var y in x){
-				if(x[y]===""){
-					alert("필수 입력칸이 비어있습니다");
-					return ok;
-				}
+		},
+		addClass : (dom,cName)=>{
+			var arr = cName.split(" ");
+			if (arr.indexOf(cName) == -1){
+				dom.className += " "+ cName;
 			}
-			
-			return ok;*/
 		}
-		
 	};
+	
 })();
 
 var admin = (()=>{
 	return {
 	check : (x) =>{
-		var isAdmin = confirm('관리자입니까?');
+		router.move({context : x , domain : 'admin', action : 'list', page : 'main'});
+		/*var isAdmin = confirm('관리자입니까?');
 		if(isAdmin){
 			
 			var password=prompt('관리자 비밀번호를 입력하세요');
@@ -42,8 +40,43 @@ var admin = (()=>{
 			}
 		}else{
 			alert('관리자만 접근이 허용됩니다.');
-		}
+		}*/
 	},
+	main : x=>{
+		
+		document.getElementById('searchButt').addEventListener('click',function(){
+			
+			var searchV = document.getElementById('contentSelect').value;
+			var searchT = document.getElementById('searchText').value;
+			
+			if(searchV==='none'){
+				alert("검색조건을 선택해주세요 .");
+				location.href=x+'/admin.do?action=findid';
+			}else {
+				if(searchV==='findid'){
+				location.href=x+'/admin.do?action=findid&page=memberDetail&userid='+
+						searchT;
+				}else{
+					location.href=x+'/admin.do?action=findsearch&page=main&searchOption='+searchV
+					+'&searchText='+searchT;
+				}
+			}
+			
+			
+		});
+
+		service.addClass(document.getElementById('contentSelect'),'height22px ');
+		
+		for (var i of document.querySelectorAll('.userName')){
+			service.addClass(i,'cursor fontColorBlue');
+			
+			i.addEventListener('click',function(){
+				location.href=x+'/admin.do?action=findid&page=memberDetail&userid='+this.getAttribute('id');
+			});
+		}
+
+		
+	}
 	
 };})();
 

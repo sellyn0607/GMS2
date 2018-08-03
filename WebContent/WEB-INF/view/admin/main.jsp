@@ -12,8 +12,8 @@
 		<div id="Login-box">
 			&nbsp;&nbsp;
 		</div>
-		<jsp:include page="menuBox.jsp" />
-	</div> <!-- header end -->
+		<%-- <jsp:include page="menuBox.jsp" /> --%>
+	</div> <!-- header end --><jsp:include page="menuBox.jsp"/>
 	<jsp:include page="contentBox.jsp" />
 	<jsp:include page="../common/footer.jsp" />
 </div>
