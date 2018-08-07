@@ -14,17 +14,25 @@ public class PstmtQuery extends QueryTemplate{
 		map.put("sql", String.format(
 				"SELECT "+ ColumnFinder.find(Domain.MEMBER)
 				+" FROM %s WHERE %s LIKE ? ", map.get("table"),map.get("column")));
+		map.put("sql2","select t.* from (select rownum seq,m.* from member m order by seq desc) t where t.seq between ? and ?");
 		
 		
 	}
 
 	@Override
 	void startPlay() {
-		String aa = "%"+map.get("value").toString()+"%";
-		System.out.println(aa);
+		
+		
 		try {
+			if(map.get("value").equals("")) {
+				pstmt=DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql2"));
+				pstmt.setString(1, map.get("beginRow").toString());
+				pstmt.setString(2, map.get("endRow").toString()); 
+			}
+			else {
 			pstmt=DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
 			pstmt.setString(1, "%"+map.get("value").toString()+"%");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

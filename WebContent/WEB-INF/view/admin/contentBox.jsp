@@ -32,18 +32,31 @@
 			</tr></c:forEach>
 			<tr>
 				<td colspan="6" style="height: 30px">
-			
-					<c:forEach begin="1" end="${count}"  step="1" var="index" >
-						<span>${index}</span>
-					</c:forEach>
+				전체 회원수 :${count} <br />
+					<c:forEach begin="${beginPage}" end="${endPage}"  varStatus="i">
+					
+				<span>
+					<a class="index2" id="${i.index}">${i.index}</a>
+				</span>
+				</c:forEach>
+				<%
+				int count = (int)request.getSession().getAttribute("count");
+				int endPage = (int)request.getSession().getAttribute("endPage");
+				if(endPage <= count){
+					%>
+					<span><a id="nextPageButt">다음▶</a></span>
+					<%
+				}
+				%>
+				 
 				</td>
-			
 			</tr>
 		</table>
 		
 	
 		</div></div>
 <script>
+
 admin.main('${context}');
 
 

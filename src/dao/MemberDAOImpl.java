@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -244,6 +245,51 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		
 		return lst;
+	}
+	
+	@Override
+	public List<MemberBean> selectList(Map<?, ?> param) {
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> lst = new ArrayList<>();
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("beginRow",param.get("beginRow"));
+		map.put("endRow",param.get("endRow"));
+		map.put("value","");
+		q.play(map);
+		for(Object s: q.getList()) {
+			lst.add((MemberBean)s);
+		}
+		
+		return lst;
+/*		String beginRow = (String) param.get("beginRow");
+		String endRow = (String) param.get("endRow");
+		List<MemberBean> lst = new ArrayList<>();
+	
+		
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE,DBConstant.USERID,DBConstant.USERPW).getConnection().
+					createStatement().executeQuery(String.format(MemberQuery.All_LIST.toString(),beginRow, endRow));
+			
+			while(rs.next()) {
+				MemberBean bean = new MemberBean();
+				bean.setUserid(rs.getString("userid"));
+				bean.setName(rs.getString("name"));
+				bean.setSsn(rs.getString("SSN"));
+				bean.setPassword(rs.getString("password"));
+				bean.setRoll(rs.getString("roll"));
+				bean.setTeamId(rs.getString("teamid"));
+				bean.setAge(rs.getString("age"));
+				bean.setGender(rs.getString("gender"));
+				lst.add(bean);
+				
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		
 	}
 
 

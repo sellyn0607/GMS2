@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import dao.MemberDAOImpl;
 import domain.MemberBean;
@@ -12,7 +13,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void createMember(MemberBean member) {
-		System.out.println(member);
 		MemberDAOImpl.getInstance().insertMember(member);
 	}
 
@@ -34,14 +34,9 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
-	@Override
-	public List<MemberBean> list() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public List<MemberBean> Search(String member) {
-		// TODO Auto-generated method stub
 		return MemberDAOImpl.getInstance().Search(member);
 	}
 	@Override
@@ -55,13 +50,17 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public int memberCount() {
-		// TODO Auto-generated method stub
 		return MemberDAOImpl.getInstance().countMember();
 	}
 	@Override
 	public List<MemberBean> findByName(String member) {
 		
 		return MemberDAOImpl.getInstance().findByName(member);
+	}
+	@Override
+	public List<MemberBean> getlist(Map<?, ?> param) {
+		// TODO Auto-generated method stub
+		return MemberDAOImpl.getInstance().selectList(param);
 	}
 	
 

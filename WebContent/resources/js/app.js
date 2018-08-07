@@ -1,7 +1,7 @@
 "use strict";
 var router= (()=> {
 	return {move :x=> {
-			location.href = x.context+"/"+x.domain+".do?action="+x.action+"&page="+x.page		
+			location.href = x.context+"/"+x.domain+".do?action="+x.action+"&page="+x.page;	
 	}};
 })();
 var service =(()=>{
@@ -51,7 +51,6 @@ var admin = (()=>{
 			
 			if(searchV==='none'){
 				alert("검색조건을 선택해주세요 .");
-				location.href=x+'/admin.do?action=findid';
 			}else {
 				if(searchV==='findid'){
 				location.href=x+'/admin.do?action=findid&page=memberDetail&userid='+
@@ -67,6 +66,12 @@ var admin = (()=>{
 
 		service.addClass(document.getElementById('contentSelect'),'height22px ');
 		
+		document.getElementById('nextPageButt').addEventListener('click',function(){
+			alert("다음 클릭됨");
+			location.href=x+'/admin.do?action=list&page=main&pageIndex='+this.getAttribute('id');
+			
+		});
+		
 		for (var i of document.querySelectorAll('.userName')){
 			service.addClass(i,'cursor fontColorBlue');
 			
@@ -74,7 +79,15 @@ var admin = (()=>{
 				location.href=x+'/admin.do?action=findid&page=memberDetail&userid='+this.getAttribute('id');
 			});
 		}
-
+		
+		for (var j of document.querySelectorAll('.index2')){
+			
+			j.addEventListener('click',function(){
+				location.href=x+'/admin.do?action=list&page=main&pageIndex='+this.getAttribute('id');
+			});
+		}
+		
+	
 		
 	}
 	

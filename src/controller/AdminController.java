@@ -54,7 +54,7 @@ public class AdminController extends HttpServlet {
 			break;
 		case LIST:
 			Carrier.forword(request, response);
-			request.getAttribute("list");
+			
 			break;
 		case LOGIN:
 			if(request.getAttribute("match").equals("TRUE")){

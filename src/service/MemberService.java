@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import domain.*;
 
@@ -13,7 +14,7 @@ public interface MemberService {
 	public void delete(MemberBean member);
 	public int memberCount();
 	public List<MemberBean> selectAllMember();
-	public List<MemberBean> list();
+	public List<MemberBean> getlist(Map<?,?>param);
 	public MemberBean login(MemberBean member);
 	
 }
