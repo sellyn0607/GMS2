@@ -32,23 +32,19 @@
 			</tr></c:forEach>
 			<tr>
 				<td colspan="6" style="height: 30px">
-				전체 회원수 :${count} <br />
-					<c:forEach begin="${beginPage}" end="${endPage}"  varStatus="i">
+				전체 회원수 :${page.rowCount} <br />
+				<c:choose><c:when test="${page.existPrev}">
+				<span id="${page.prevBlock}" class="pageNumber">◀이전</span>
+				</c:when></c:choose>
+					<c:forEach begin="${page.beginPage}" end="${page.endPage}"  varStatus="i">
 					
 				<span>
 					<a class="index2" id="${i.index}">${i.index}</a>
 				</span>
 				</c:forEach>
-				<%
-				int count = (int)request.getSession().getAttribute("count");
-				int endPage = (int)request.getSession().getAttribute("endPage");
-				if(endPage <= count){
-					%>
-					<span><a id="nextPageButt">다음▶</a></span>
-					<%
-				}
-				%>
-				 
+			<c:choose><c:when test="${page.existNext}">
+					<span id="${page.nextBlock}" class="pageNumber">다음▶</span>
+				 </c:when></c:choose>
 				</td>
 			</tr>
 		</table>
@@ -57,7 +53,7 @@
 		</div></div>
 <script>
 
-admin.main('${context}');
+admin.main({context:'${context}',endpage : '${page.endPage}',beginpage:'${beginPage+1}'});
 
 
 
