@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="menu-box" style="text-align: right;">
 			<ul id="menu">
 				<li ><a id="homeButt">HOME</a></li>

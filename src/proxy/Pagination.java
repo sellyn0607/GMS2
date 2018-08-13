@@ -29,11 +29,8 @@ public class Pagination implements Proxy{
 		this.prevBlock = beginPage - blockSize;
 		this.nextBlock = beginPage + blockSize;
 		this.existPrev = (prevBlock>=0);
-		System.out.println("existPrev  "+existPrev);
 		this.existNext = (nextBlock<=pageCount);
-		System.out.println("existNext  "+existNext);
 		
-	//Integer.parseInt(s)	
 	}
 	
 	

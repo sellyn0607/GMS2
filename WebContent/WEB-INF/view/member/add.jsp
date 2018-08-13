@@ -1,21 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-
-<jsp:include page="../common/head.jsp" />
-
-
 <style>
 #user {
 	margin: 150px auto;
 	width: 250px;
 }
 </style>
-
-<body>
-
-
 	<div id="user">
 		<h2>회원 가입</h2>
 		<form id="joinForm"  style="border:1px solid black" name="joinForm"> 
@@ -26,7 +16,6 @@
 				 <input type="radio" name="roll"value="프론트개발" />프론트개발<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 				 <input type="radio" name="roll"value="백단개발" /> 백단개발
 				 <input type="radio" name="roll"value="민폐" />민폐 <br> 
-			
 			
 			 팀ID : <select name="team_id">
 			 		<option value="ATEAM">ATEAM</option>
@@ -62,9 +51,9 @@
 						form.method = "post";
 						member.join([ form.ssn2.value, form.ssn1.value ]);
 						var arr = {
-							name : [ 'action', 'gender', 'age' ],
-							value : [ 'join', member.getGender(),
-									member.getAge() ]
+							name : [ 'action', 'gender', 'age','page'],
+							value : [ 'add', member.getGender(),
+									member.getAge(),'main' ]
 						};
 
 						/* var j=[{name : 'action',value : 'join'},
@@ -74,17 +63,13 @@
 						/* var arr=['action','gender','age'];
 						var arr2=['join','','']; */
 
-						for (var i = 0; i < 3; i++) {
+						for (var i = 0; i < 4; i++) {
 							var node = document.createElement('input');
 							node.setAttribute('type', 'hidden');
 							node.setAttribute('name', arr.name[i]);
 							node.setAttribute('value', arr.value[i]);
 							form.appendChild(node);
 						}
-
-						/*form.gender.value = member.getGender();
-						form.age.value = member.getAge(); */
-
 						form.submit();
 
 					} else {
@@ -92,9 +77,4 @@
 
 					}
 				}); 
-	
-
-					
 	</script>
-</body>
-</html>

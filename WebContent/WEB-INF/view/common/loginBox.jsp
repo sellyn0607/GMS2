@@ -5,9 +5,9 @@
 		</div>
 <script>
 document.getElementById('moveLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	router.move({context : '${context}',domain : 'member', action : 'move', page : 'userLoginForm'});
+	router.move({context : '${context}',domain : 'member', action : 'move', page : 'login'});
 });
 document.getElementById('joinLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	router.move({context : '${context}',domain : 'member',action : 'move',page : 'joinForm'});
+	router.move({context : '${context}',domain : 'member',action : 'move',page : 'add'});
 });
 </script>

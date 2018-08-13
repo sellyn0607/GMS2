@@ -1,13 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<!doctype html>
-<html lang="en">
-<jsp:include page="../common/head.jsp"/>
-<body>
 <table style="margin:100px 450px 0px" >
 	<tr>
-		<td rowspan="3" colspan="2"><img src="${img}/home/test.jpg" alt="" /></td>
+		<td rowspan="3" colspan="2">
+		<img src="${img}/home/test.jpg" alt="" />
+		</td>
 		<td>ID</td>
 		<td>${user.userid}</td>
 	</tr>
@@ -50,7 +46,7 @@ document.getElementById('myPageUpdate').addEventListener('click',function(){
 	router.move({context : '${context}',
 	domain : 'member',
 	action : 'move',
-	page : 'updateForm'
+	page : 'modify'
 	
 	})
 });
@@ -58,10 +54,8 @@ document.getElementById('myPageDelete').addEventListener('click',function(){
 	router.move({context : '${context}',
 	domain : 'member',
 	action : 'move',
-	page : 'deleteForm'
+	page : 'remove'
 	
 	})
 });
 </script>
-</body>
-</html>

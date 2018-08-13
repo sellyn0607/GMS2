@@ -10,14 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import enums.*;
 
-import command.Carrier;
-import command.FindIdCommand;
-import command.FindSearchCommand;
-import command.ListCommand;
-import command.Sentry;
-import command.UpdateCommand;
-import domain.MemberBean;
-import service.MemberServiceImpl;
+import command.*;
+
 @WebServlet("/admin.do")
 /*@WebServlet({"/member/joinFrom.do","/member/joinResult.do","/member/userLoginFrom.do","/member/listFrom.do",
 	"/member/findByIdFrom.do","/member/findByTeamIdFrom.do","/member/updateFrom.do","/member/deleteFrom.do"})*/
@@ -25,37 +19,34 @@ public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Sentry.init(request,response);
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {//명령을 보냄 
+		Receiver.init(request,response);
+		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {//명령을 보냄 
 		case MOVE :
 				Carrier.forword(request, response);
 			//request.getRequestDispatcher(String.format("/WEB-INF/view/member/%s.jsp",request.getParameter("page"))).forward(request, response);
 		break;
 		
-		case JOIN:
+		case ADD:
 			
 			Carrier.forword(request, response);
 			break;
 		
-		case UPDATE:
+		case MODIFY:
 				//Carrier.redirect(request, response,"");
 		break;
-		case DELETE:
+		case REMOVE:
 			Carrier.redirect(request, response,"");
 			break;
-		case FINDID:
+		case RETRIEVE:
 			Carrier.forword(request, response);
 			break;
-		case FINDSEARCH:
+		case SEARCH:
 			Carrier.forword(request, response);
 			break;
 		case COUNT:
 			//System.err.println(request.getAttribute("count"));
 			break;
-		case LIST:
-			Carrier.forword(request, response);
-			
-			break;
+		
 		case LOGIN:
 			if(request.getAttribute("match").equals("TRUE")){
 				Carrier.forword(request, response);

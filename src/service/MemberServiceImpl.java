@@ -12,56 +12,35 @@ public class MemberServiceImpl implements MemberService{
 	private MemberServiceImpl() {}
 
 	@Override
-	public void createMember(MemberBean member) {
-		MemberDAOImpl.getInstance().insertMember(member);
+	public void add(MemberBean member) {
+		MemberDAOImpl.getInstance().add(member);
 	}
-
 	@Override
-	public MemberBean findById(MemberBean member) {
-		
-		return MemberDAOImpl.getInstance().findById(member);
+	public MemberBean retrieve(MemberBean member) {
+		return MemberDAOImpl.getInstance().retrieve(member);
 	}
-
 	@Override
-	public void update(MemberBean member) {
-		
-		 MemberDAOImpl.getInstance().updateMember(member);
-	}
-
-	@Override
-	public void delete(MemberBean member) {
-		MemberDAOImpl.getInstance().deleteMember(member);
+	public void modify(Map<?, ?> param) {
+		MemberDAOImpl.getInstance().modify(param);
 		
 	}
-
-	
 	@Override
-	public List<MemberBean> Search(String member) {
-		return MemberDAOImpl.getInstance().Search(member);
-	}
-	@Override
-	public MemberBean login(MemberBean member) {
+	public void remove(MemberBean member) {
+		MemberDAOImpl.getInstance().remove(member);
 		
-		return MemberDAOImpl.getInstance().login(member);
-	}
-	@Override
-	public List<MemberBean> selectAllMember() {
-		return MemberDAOImpl.getInstance().selectAllMember();
 	}
 	@Override
 	public int memberCount() {
-		return MemberDAOImpl.getInstance().countMember();
+		return MemberDAOImpl.getInstance().count();
 	}
 	@Override
-	public List<MemberBean> findByName(String member) {
-		
-		return MemberDAOImpl.getInstance().findByName(member);
+	public List<MemberBean> search(Map<?, ?> param) {
+		return MemberDAOImpl.getInstance().search(param);
 	}
 	@Override
-	public List<MemberBean> getlist(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return MemberDAOImpl.getInstance().selectList(param);
+	public MemberBean login(MemberBean member) {
+		return MemberDAOImpl.getInstance().login(member);
 	}
-	
 
+	
 }

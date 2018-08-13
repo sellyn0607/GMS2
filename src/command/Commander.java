@@ -15,29 +15,29 @@ public class Commander {
 		case MOVE:
 		cmd = new MoveCommand(request);
 		break;
-		case JOIN:
+		case ADD:
 			cmd = new CreateCommand(request);
 		break;
-		case UPDATE:
+		case MODIFY:
 			cmd = new UpdateCommand(request,response);
 			break;
-		case DELETE:
+		case REMOVE:
 			cmd = new DeleteCommand(request);
 			break;
-		case FINDID:
-			cmd = new FindIdCommand(request);
+		case RETRIEVE:
+			cmd = new RetrieveCommand(request);
 			break;
-		case FINDSEARCH:
-			cmd = new FindSearchCommand(request);
-			break;
-		case LIST:
-			cmd = new ListCommand(request);
+		case SEARCH:
+			cmd = new SearchCommand(request);
 			break;
 		case LOGIN:
 			cmd = new LoginCommand(request);
 			break;
 		case COUNT:
 			cmd= new CountCommand(request);
+			break;
+		case FILEUPLOAD:
+			cmd= new FileCommand(request);
 			break;
 		default:
 			break;

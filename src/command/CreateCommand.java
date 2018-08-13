@@ -12,8 +12,6 @@ public class CreateCommand extends Command {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage("userLoginForm");
-		System.out.println("크리에이트");
 		execute();
 	}
 	@Override
@@ -21,7 +19,7 @@ public class CreateCommand extends Command {
 		
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("회원가입에 들어옴 !");
+			request.setAttribute("pagename",request.getParameter("page"));
 			MemberBean mem = new MemberBean();
 			mem.setName(request.getParameter("name"));
 			mem.setUserid(request.getParameter("userid"));
@@ -32,8 +30,8 @@ public class CreateCommand extends Command {
 			mem.setAge(request.getParameter("age"));
 			mem.setGender(request.getParameter("gender"));
 			//mem.setSubject(ParamMap.getValues(request,"subject"));
-			MemberServiceImpl.getInstance().createMember(mem);
-			System.out.println("회원가입에 성공");
+			MemberServiceImpl.getInstance().add(mem);
+			
 			break;
 		default:
 			break;

@@ -1,56 +1,52 @@
 package enums;
 
+import template.ColumnFinder;
+
 public enum MemberQuery {
-	LOGIN,INSERT_MEMBAER,SSN_LIST,TEST,TEST2,COUNT_MEMBER,UPDATE_MEMBER,UPDATE_MEMBER2,DELETE_MEMBER,
-	SELECT_ALLMEMBER,DELETE_MEMBER2,FIND_BY_ID,FIND_BY_TEAMID,FIND_BY_NAME,All_LIST;
+	LOGIN,INSERT,COUNT,UPDATE,UPDATE2,DELETE,
+	search,DELETE2,RETRIEVE,SEARCH,All_LIST,COUNT2;
+	
+	
 	@Override
 	public String toString() {
 		String query = "";
 		
 		switch (this) {
 		case LOGIN: 
-			query="SELECT userid, teamid, NAME, SSN,ROLL"+
-					"  , PASSWORD FROM MEMBER WHERE userid LIKE '%s' and PASSWORD LIKE '%s'";
+			query=	"  SELECT  "+ ColumnFinder.find(Domain.MEMBER)
+			+" FROM MEMBER WHERE userid LIKE ? and PASSWORD LIKE ?";
 			break;
-		case INSERT_MEMBAER:
-			query="insert into member(userid,password,name,ssn,age,roll,teamid,gender) values('%s','%s','%s','%s','%s','%s','%s','%s') ";
+		case INSERT:
+			query="insert into member(userid,password,name,ssn,age,roll,teamid,gender) values(?, ?, ?, ?, ?, ?, ?, ?) ";
 			break;
-		case SSN_LIST:
-			query="select mem_age from teamw "; break;
-			
-		case TEST:
-			query="update member set SSN='%s' where mem_id like '%s'"; break;
-		case TEST2:
-			query="update member set AGE='%s' where mem_id like '%s'"; break;
-		case COUNT_MEMBER:
+	
+		case COUNT:
 			query="select count(*) AS count FROM MEMBER";
 			
 			break;
-		case UPDATE_MEMBER:
-			query="update member set PASSWORD='%s',roll='%s',teamid='%s' where userid like '%s'"; 
+		case COUNT2:
+			query="select count(*) AS count FROM MEMBER where %s like ? ";
 			break;
-		case UPDATE_MEMBER2:
-			query="select userid,password from member where userid like '%s' and password like '%s'";
+		case UPDATE:
+			query="update member set PASSWORD=? ,roll= ?,teamid= ? where userid like ?";
+			//query = "update member set %s = ? where userid like ?";
 			break;
-		case DELETE_MEMBER:
-			query="delete from member where userid like '%s'";
+		case UPDATE2:
+			query="select userid,password from member where userid like ? and password like ?";
+			break;
+		case DELETE:
+			query="delete from member where userid like ? and password like ? ";
 			break;
 		
-		case SELECT_ALLMEMBER:
-			query="select userid,SSN,name,password,roll,teamid,age,gender from member";
-			break;
-		case FIND_BY_ID :
-			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where userid like '%s'";
-			break;
-		case FIND_BY_TEAMID:
-			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where teamid like '%s'";
+		case SEARCH:
+			query="select t.* from (select rownum seq,m.* from member m WHERE %s like ? order by seq desc) t where t.seq between ? and ?";
+			break;//얘가 search
+		case RETRIEVE :
+			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where userid like ?";
 			break;
 			
-		case FIND_BY_NAME:
-			query = "select userid,SSN,name,password,roll,teamid,age,gender from member where name like '%s'";
-			break;
 		case All_LIST:
-			query = "select t.* from (select rownum seq,m.* from member m order by seq desc) t where t.seq between %s and %s" ;
+			query = "select t.* from (select rownum seq,m.* from member m order by seq desc) t where t.seq between ? and ?" ;
 		default:
 			break;
 		}

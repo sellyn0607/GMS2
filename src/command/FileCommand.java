@@ -2,8 +2,8 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MoveCommand extends Command{
-	public MoveCommand(HttpServletRequest request) {
+public class FileCommand extends Command{
+	public FileCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -12,7 +12,6 @@ public class MoveCommand extends Command{
 	@Override
 	public void execute() {
 		super.execute();
-		System.out.println("으ㅜ으으"+request.getParameter("page"));
 		request.setAttribute("pagename",request.getParameter("page"));
 	}
 }

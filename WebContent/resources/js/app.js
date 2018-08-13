@@ -25,11 +25,23 @@ var service =(()=>{
 	};
 	
 })();
+var common = (()=>{
+	return{
+	main : (x) =>{
+		document.getElementById('adminButt').addEventListener('click',function(){
+			
+			
+		router.move({context : x , domain : 'member', action : 'search', page : 'search'});
+		
+	})}
+	
+	
+};})();
 
 var admin = (()=>{
 	return {
 	check : (x) =>{
-		router.move({context : x , domain : 'admin', action : 'list', page : 'main'});
+		router.move({context : x , domain : 'member', action : 'search', page : 'search'});
 		/*var isAdmin = confirm('관리자입니까?');
 		if(isAdmin){
 			
@@ -53,10 +65,10 @@ var admin = (()=>{
 				alert("검색조건을 선택해주세요 .");
 			}else {
 				if(searchV==='findid'){
-				location.href=x.context+'/admin.do?action=findid&page=memberDetail&userid='+
+				location.href=x.context+'/member.do?action=retrieve&page=retrieve&userid='+
 						searchT;
 				}else{
-					location.href=x.context+'/admin.do?action=findsearch&page=main&searchOption='+searchV
+					location.href=x.context+'/member.do?action=search&page=search&searchOption='+searchV
 					+'&searchText='+searchT;
 				}
 			}
@@ -65,40 +77,22 @@ var admin = (()=>{
 		});
 
 		service.addClass(document.getElementById('contentSelect'),'height22px ');
-		/*if(){}else{}*/
-		/*document.getElementById('PrevButt').addEventListener('click',()=>{
-			alert('이전 클릭');
-			
-			location.href=x.context+'/admin.do?action=list&page=main&pageIndex='+6;
-			
-		});*/
-		
-		
-		
-		
 		
 		for (var i of document.querySelectorAll('.userName')){
 			service.addClass(i,'cursor fontColorBlue');
 			
 			i.addEventListener('click',function(){
-				location.href=x.context+'/admin.do?action=findid&page=memberDetail&userid='+this.getAttribute('id');
+				location.href=x.context+'/member.do?action=retrieve&page=retrieve&userid='+this.getAttribute('id');
 			});
 		}
 		
-		for (var j of document.querySelectorAll('.index2')){
+		for (var j of document.querySelectorAll('.pageNumber')){
 			
 			j.addEventListener('click',function(){
-				location.href=x.context+'/admin.do?action=list&page=main&pageIndex='+this.getAttribute('id');
+				location.href=x.context+'/member.do?action=search&page=search&pageIndex='+this.getAttribute('id');
 			});
 		}
-		document.getElementById('${page.nextBlock}').addEventListener('click',function(){
-			
-			//var e = document.querySelector('.index2').getAttribute('id')*1+5;
-			 
-			alert('다음 클릭');
-			//location.href=x.context+'/admin.do?action=list&page=main&pageIndex='+this.getAttribute('id');
-			
-		});
+		
 	
 		
 	}

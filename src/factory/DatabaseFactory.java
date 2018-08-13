@@ -42,7 +42,7 @@ public class DatabaseFactory {
 		case ORACLE:
 			driver = DBConstant.ORACLE_DRIVER;
 			url = DBConstant.CONNECTION_URL;
-			db=new Oracle(driver,url,(String)map.get("userid"),(String)map.get("userpw"));
+			db=new Oracle(driver,url,(String)map.get("userId"),(String)map.get("userpw"));
 		
 			
 			break;

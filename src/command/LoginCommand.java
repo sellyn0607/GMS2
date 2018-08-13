@@ -12,8 +12,7 @@ public class LoginCommand extends Command{
 		setRequest(request);
 		setAction(request.getParameter("action"));
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
-		setPage("mypage");
-		//setPage(request.getParameter("page"));
+		
 		execute();
 	}
 	@Override
@@ -21,6 +20,7 @@ public class LoginCommand extends Command{
 		
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
+			request.setAttribute("pagename",request.getParameter("page"));
 			MemberBean m = new MemberBean();
 			m.setUserid(request.getParameter("userid"));
 			m.setPassword(request.getParameter("pw"));
@@ -30,8 +30,7 @@ public class LoginCommand extends Command{
 		  		
 		  	}else {
 		  		request.setAttribute("match","TRUE");
-/*		  		request.setAttribute("user",MemberServiceImpl.getInstance().findById(m));*/
-		  		request.getSession().setAttribute("user",MemberServiceImpl.getInstance().findById(m));
+		  		request.getSession().setAttribute("user",MemberServiceImpl.getInstance().retrieve(m));
 		  		
 		  	}
 		  	

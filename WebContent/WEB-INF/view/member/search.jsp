@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<div id="content">
 <div id="content-box">
 	<div id="contentBoxSearch" style="text-align: left; margin-left: 315px;"> 
 	<select id="contentSelect" name="contentSelect" >
@@ -50,17 +48,8 @@
 		</table>
 		
 	
-		</div></div>
+		</div>
 <script>
 
 admin.main({context:'${context}',endpage : '${page.endPage}',beginpage:'${beginPage+1}'});
-
-
-
-
-	
-	
-	
-/* <a href="${context}/admin.do?action=findid&page=memberDetail&userid=
-	${member.getUserid()}" style="cursor: pointer;">${member.getName() }</a> */
 </script>

@@ -1,5 +1,8 @@
 package command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,30 +14,25 @@ public class UpdateCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		
 		execute();
 	}
 	@Override
 	public void execute() {
 		
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
-		case MEMBER:
+		
+		request.setAttribute("pagename",request.getParameter("page"));
 			System.out.println("업데이트 확인");
-			MemberBean m = new MemberBean();
-			m.setUserid(((MemberBean) request.getSession().getAttribute("user")).getUserid());
-			m.setPassword(request.getParameter("password"));
-			m.setRoll(request.getParameter("roll"));
-			m.setTeamId(request.getParameter("teamId"));
-			System.out.println("보내기전"+m);
-			MemberServiceImpl.getInstance().update(m);
-			System.out.println(m);
-			break;
-		default:
-			break;
-			
+			Map<String,Object> map = new HashMap<>();
+			map.put("userid",((MemberBean) request.getSession().getAttribute("user")).getUserid());
+			map.put("password",request.getParameter("password"));
+			map.put("roll",(request.getParameter("roll")));
+			map.put("teamid", request.getParameter("teamId"));
+			MemberServiceImpl.getInstance().modify(map);
+		
 			
 		
-		}
+		
 		super.execute();
 	}
 }

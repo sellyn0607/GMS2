@@ -23,11 +23,16 @@ public class CommonController extends HttpServlet {
     
     			request.getSession().setAttribute(r.toString().toLowerCase(),
     					(i==0)?
-    					request.getContextPath():request.getContextPath()+"/resources/"+
-    			    			r.toString().toLowerCase());
+    					request.getContextPath()
+    				   :request.getContextPath()
+    					+"/resources/"+r.toString().toLowerCase());
+    				
     			i++;
     	}
-        request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);
+    	//System.out.println(request.getServletPath().split("\\.")+"/");
+        request.getRequestDispatcher(Term.WEBPATH.toString()+
+        		request.getServletPath().substring(0,request.getServletPath().indexOf("."))
+        		+Term.MAIN.toString()).forward(request, response);
     }
     
 }
