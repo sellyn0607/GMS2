@@ -2,6 +2,10 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
+import domain.ImageBean;
+import domain.MemberBean;
+import service.ImageServiceImpl;
+
 public class FileCommand extends Command{
 	public FileCommand(HttpServletRequest request) {
 		setRequest(request);
@@ -13,5 +17,9 @@ public class FileCommand extends Command{
 	public void execute() {
 		super.execute();
 		request.setAttribute("pagename",request.getParameter("page"));
+		ImageBean img = ImageServiceImpl.getInstance().call(((MemberBean) request.getSession().getAttribute("user")).getUserid());
+		String imgPath = "/upload/"+img.getImgName()+"."+img.getExtension();
+		request.setAttribute("imgfile",imgPath);
+		
 	}
 }

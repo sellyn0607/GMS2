@@ -19,10 +19,13 @@ import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import enums.*;
-
+import service.ImageService;
+import service.ImageServiceImpl;
 import command.*;
+import domain.MemberBean;
 
 @WebServlet("/member.do")
 /*@WebServlet({"/member/joinFrom.do","/member/joinResult.do","/member/userLoginFrom.do","/member/listFrom.do",
@@ -39,17 +42,16 @@ public class MemberController extends HttpServlet {
 		
 		case ADD:
 			Carrier.redirect(request, response,"");
-			//Carrier.forword(request, response);
 			break;
 		
 		case MODIFY:
 			Carrier.forword(request, response);
 		break;
 		case REMOVE:
-			
 			Carrier.redirect(request, response,"");
 			break;
 		case RETRIEVE:
+			/*Carrier.redirect(request, response,"/member.do?action=fileupload&page="+request.getParameter("page"));*/
 			Carrier.forword(request, response);
 		break;
 		case SEARCH:
@@ -70,24 +72,23 @@ public class MemberController extends HttpServlet {
 			upload.setFileSizeMax(1024 * 1024 *3); // 3mb
 			upload.setSizeMax(1024 * 1024 *50);//50mb
 			List<FileItem> items = null;
-			
 			try {
 				File file = null;
-				
-				items=upload.parseRequest((RequestContext) request);
+				items=upload.parseRequest(new ServletRequestContext(request));
 				Iterator<FileItem>iter = items.iterator();
-				//FileReader fr = new FileReader(file);
-				
 					while(iter.hasNext()) {
 							FileItem item = (FileItem)iter.next();
 							if(!item.isFormField()) {
-								String fieldName = item.getFieldName();
+								HashMap<String,Object> map = new HashMap<>();
 								String fileName = item.getName();
-								boolean isInMemory = item.isInMemory();
-								long sizeInBytes = item.getSize();
-								file = new File(fileName);
+								file = new File(Term.UPLOAD_PATH+fileName);
 								item.write(file);
-								System.out.println("파일업로드 성공");
+								map.put("userid",((MemberBean) request.getSession().getAttribute("user")).getUserid());
+								map.put("imgname", fileName.substring(0,fileName.indexOf(".")));
+								map.put("ext",fileName.substring(fileName.indexOf(".")+1,fileName.length()));
+								map.put("table", "img");
+								ImageServiceImpl.getInstance().insert(map);
+								// image table 에 id , image name , ext 저장 
 							}else {
 								System.out.println("파일업로드실패");
 							}
@@ -97,26 +98,21 @@ public class MemberController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-	
-			
-			
-			
-			
-			
-			
-	
-			
 			
 			System.err.println("캐리어로 들어가기전 ");
 			Carrier.forword(request, response);
 			break;
 		case LOGIN:
-			if(request.getAttribute("match").equals("TRUE")){
+			if(request.getSession().getAttribute("match").equals("TRUE")){
 				Carrier.forword(request, response);
 			}else {
 				Carrier.redirect(request, response,"/member.do?action=move&page=login");
 			}
+			break;
+		case LOGOUT:
+			Carrier.redirect(request, response,"");
+			break;
+		default:
 			break;
 		  	}
 		

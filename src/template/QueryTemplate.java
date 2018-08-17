@@ -3,6 +3,7 @@ package template;
 import java.sql.*;
 import java.util.*;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.*;
 import factory.DatabaseFactory;
@@ -19,7 +20,9 @@ public abstract class QueryTemplate {
 	   List<Object> list;
 	   PreparedStatement pstmt;
 	   MemberBean mem2;
+	   ImageBean img2;
 	   Object o; // 멤버빈 담는그릇 수정할것 
+	   
 	   int count;
 
 	   //template method
@@ -28,6 +31,7 @@ public abstract class QueryTemplate {
 		   this.list = new ArrayList<>();
 		   this.map =new HashMap<>();
 		   this.o=null;
+		   this.img2=new ImageBean();
 		   this.count= 0;
 		   this.mem2= new MemberBean();
 		   this.map.put("Vendor", Vendor.ORACLE);

@@ -39,6 +39,9 @@ public class Commander {
 		case FILEUPLOAD:
 			cmd= new FileCommand(request);
 			break;
+		case LOGOUT:
+			cmd= new LogOutCommand(request);
+			break;
 		default:
 			break;
 			

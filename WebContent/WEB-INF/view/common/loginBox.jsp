@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="Login-box">
-			<button type = "button" id="moveLoginForm" >LOGIN</button>
-			 &nbsp; &nbsp; <button type = "button" id="joinLoginForm" >JOIN</button>
+	
+	<c:choose>
+		<c:when test="${match eq 'TRUE'}">
+		<button type = "button" id="logoutButt" >로그아웃</button>
+		</c:when>
+		<c:otherwise>
+			<button type = "button" id="moveLoginForm" >로그인</button>
+			 &nbsp; &nbsp; <button type = "button" id="joinLoginForm" >회원가입</button>
+		</c:otherwise>
+	</c:choose>
 		</div>
-<script>
-document.getElementById('moveLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	router.move({context : '${context}',domain : 'member', action : 'move', page : 'login'});
-});
-document.getElementById('joinLoginForm').addEventListener('click',function(){ // 콜백함수 .....
-	router.move({context : '${context}',domain : 'member',action : 'move',page : 'add'});
-});
-</script>

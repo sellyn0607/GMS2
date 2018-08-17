@@ -2,8 +2,10 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Domain;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command{
@@ -25,6 +27,9 @@ public class RetrieveCommand extends Command{
 			me.setUserid(request.getParameter("userid"));
 			me =MemberServiceImpl.getInstance().retrieve(me);
 			request.setAttribute("user", me);
+			ImageBean img = ImageServiceImpl.getInstance().call(request.getParameter("userid"));
+			String imgPath = "/upload/"+img.getImgName()+"."+img.getExtension();
+			request.setAttribute("imgfile",imgPath);
 			break;
 			
 		case ADMIN:

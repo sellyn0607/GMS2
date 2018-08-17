@@ -36,6 +36,7 @@ public class MemberDAOImpl implements MemberDAO{
 		map.put("gender",member.getGender());
 		map.put("teamid",member.getTeamId());
 		map.put("roll",member.getRoll());
+		map.put("table","member");
 		q.play(map);
 	
 	}
@@ -44,6 +45,7 @@ public class MemberDAOImpl implements MemberDAO{
 		QueryTemplate q = new RetrieveQuery();
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("userid",member.getUserid());
+		map.put("table", "retrieve");
 		q.play(map);
 		
 	

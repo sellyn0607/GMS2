@@ -170,3 +170,12 @@ div#footer{
 .pageBox li{
 	display:inline;
 }
+
+#logoutButt{
+	background-color: #99ccff;
+    color: white;
+    font-size : 17px;
+    text-align: center;
+    display: inline-block;
+    
+}

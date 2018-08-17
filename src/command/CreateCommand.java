@@ -31,7 +31,6 @@ public class CreateCommand extends Command {
 			mem.setGender(request.getParameter("gender"));
 			//mem.setSubject(ParamMap.getValues(request,"subject"));
 			MemberServiceImpl.getInstance().add(mem);
-			
 			break;
 		default:
 			break;

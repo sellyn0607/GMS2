@@ -16,7 +16,6 @@
 				 <input type="radio" name="roll"value="프론트개발" />프론트개발<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 				 <input type="radio" name="roll"value="백단개발" /> 백단개발
 				 <input type="radio" name="roll"value="민폐" />민폐 <br> 
-			
 			 팀ID : <select name="team_id">
 			 		<option value="ATEAM">ATEAM</option>
 					<option value="CTEAM">CTEAM</option>
@@ -32,49 +31,7 @@
 					<input type="checkbox" name="subject" value="Spring" /> Spring <br /> 
 			주민번호 : <input type="text" name="ssn1" maxlength="6" size="7"> -
 					<input type="text" name="ssn2" maxlength="1" size="1"> <br>
-
 				<input id="joinButt" type="button" value="회원가입">
 		 </form> 
 	</div>
-	<script>
-	 document.getElementById('joinButt').addEventListener(
-				'click',
-				function() {
 
-					var form = document.getElementById('joinForm');
-					var x = service.nullChecker([ form.userid.value,
-							form.pw.value, form.name.value, form.roll.value,
-							form.team_id.value, form.ssn1.value,
-							form.ssn2.value ]);
-					if (x.checker) {
-						form.action = "${context}/member.do";
-						form.method = "post";
-						member.join([ form.ssn2.value, form.ssn1.value ]);
-						var arr = {
-							name : [ 'action', 'gender', 'age','page'],
-							value : [ 'add', member.getGender(),
-									member.getAge(),'main' ]
-						};
-
-						/* var j=[{name : 'action',value : 'join'},
-							{name : 'gender',value : member.getGender()},
-							{name : 'age',value : member.getAge()}]; */
-
-						/* var arr=['action','gender','age'];
-						var arr2=['join','','']; */
-
-						for (var i = 0; i < 4; i++) {
-							var node = document.createElement('input');
-							node.setAttribute('type', 'hidden');
-							node.setAttribute('name', arr.name[i]);
-							node.setAttribute('value', arr.value[i]);
-							form.appendChild(node);
-						}
-						form.submit();
-
-					} else {
-						alert(x.text);
-
-					}
-				}); 
-	</script>

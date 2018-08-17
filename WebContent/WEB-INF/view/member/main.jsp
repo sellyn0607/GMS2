@@ -39,7 +39,7 @@
 	<jsp:include page="../common/footer.jsp" />
 
 <script>
-
+member.main('${context}')
 </script>
 </body>
 </html>

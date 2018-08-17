@@ -2,8 +2,10 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Domain;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 
 public class LoginCommand extends Command{
@@ -29,8 +31,14 @@ public class LoginCommand extends Command{
 		  		request.setAttribute("match","FALSE");
 		  		
 		  	}else {
-		  		request.setAttribute("match","TRUE");
+		  		request.getSession().setAttribute("match","TRUE");
 		  		request.getSession().setAttribute("user",MemberServiceImpl.getInstance().retrieve(m));
+		  		
+		  		ImageBean img = ImageServiceImpl.getInstance().call(((MemberBean) request.getSession().getAttribute("user")).getUserid());
+				String imgPath = "/upload/"+img.getImgName()+"."+img.getExtension();
+				request.setAttribute("imgfile",imgPath);
+		  		
+		  		
 		  		
 		  	}
 		  	

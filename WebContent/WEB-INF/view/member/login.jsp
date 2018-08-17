@@ -11,18 +11,4 @@
 	<input type="hidden" name="page" value="retrieve"/>
 	<input id="loginFormBtn" type="button" value="로그인"><br>
 	</form></div></div>
-	<script>
-	document.getElementById('loginFormBtn').addEventListener('click',function(){
-	
-		var form = document.getElementById('loginForm');
-		var x = service.nullChecker([form.userid.value,form.pw.value]);
-		if(x.checker){
-			form.action="${context}/member.do";
-			form.method="post";
-			form.submit();
-		}else
-			alert(x.text);
-		
-		
-	});
-</script>
+

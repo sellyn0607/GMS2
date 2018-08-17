@@ -6,8 +6,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.ImageBean;
 import domain.MemberBean;
 import enums.Domain;
+import service.ImageServiceImpl;
 import service.MemberServiceImpl;
 public class UpdateCommand extends Command{
 	public UpdateCommand(HttpServletRequest request,HttpServletResponse response) {
@@ -29,7 +31,9 @@ public class UpdateCommand extends Command{
 			map.put("roll",(request.getParameter("roll")));
 			map.put("teamid", request.getParameter("teamId"));
 			MemberServiceImpl.getInstance().modify(map);
-		
+			ImageBean img = ImageServiceImpl.getInstance().call(((MemberBean) request.getSession().getAttribute("user")).getUserid());
+			String imgPath = "/upload/"+img.getImgName()+"."+img.getExtension();
+			request.setAttribute("imgfile",imgPath);
 			
 		
 		

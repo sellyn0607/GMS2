@@ -50,6 +50,5 @@
 	
 		</div>
 <script>
-
-admin.main({context:'${context}',endpage : '${page.endPage}',beginpage:'${beginPage+1}'});
+admin.main({context:'${context}'});
 </script>
